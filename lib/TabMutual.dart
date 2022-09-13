@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MutualPage extends StatefulWidget {
-  const MutualPage({Key? key}) : super(key: key);
+class TabMutual extends StatefulWidget {
+  const TabMutual({Key? key}) : super(key: key);
 
   @override
-  State<MutualPage> createState() => _MutualPageState();
+  State<TabMutual> createState() => _TabMutualState();
 }
 
-class _MutualPageState extends State<MutualPage>
+class _TabMutualState extends State<TabMutual>
     with SingleTickerProviderStateMixin {
   TabController? _tabController;
 
