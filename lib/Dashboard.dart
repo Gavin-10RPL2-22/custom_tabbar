@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_colorful_tab/flutter_colorful_tab.dart';
-import 'package:test_tabbar/mutual.dart';
+import 'package:test_tabbar/TabMutual.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+class Dashboard extends StatefulWidget {
+  Dashboard({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _DashboardState createState() => _DashboardState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
+class _DashboardState extends State<Dashboard>
     with SingleTickerProviderStateMixin {
   TabController? _tabController;
 
@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage>
               ),
               Expanded(
                 child: TabBarView(controller: _tabController, children: [
-                  MutualPage(),
+                  TabMutual(),
                   Center(child: Text("Bond")),
                   Center(child: Text("Unit Link")),
                 ]),
