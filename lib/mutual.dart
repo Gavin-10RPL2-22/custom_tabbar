@@ -18,6 +18,20 @@ class _MutualPageState extends State<MutualPage>
     "24 of 43",
   ];
 
+  List fund_manager_title = [
+    "Bahana TCW Investment Management",
+    "Sucorinvest Asset Management",
+    "Mandiri Manajemen Investasi",
+    "Batavia Prosperindo Aset Manajemen",
+  ];
+
+  List fund_manager_harga = [
+    "IDR 40,879,584,506,115",
+    "IDR 38,604,177,248,685",
+    "IDR 37,464,383,536,587",
+    "IDR 36,343,937,440,559",
+  ];
+
   final _tabs = [
     Tab(text: '1 Month'),
     Tab(text: '3 Month'),
@@ -55,28 +69,28 @@ class _MutualPageState extends State<MutualPage>
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 15),
             child: Text(outperform_benchmark[index],
-                textAlign: TextAlign.center, style: TextStyle(fontSize: 9)),
+                textAlign: TextAlign.center, style: TextStyle(fontSize: 12)),
           ),
         ),
         Expanded(
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 15),
             child: Text(outperform_benchmark[index],
-                textAlign: TextAlign.center, style: TextStyle(fontSize: 9)),
+                textAlign: TextAlign.center, style: TextStyle(fontSize: 12)),
           ),
         ),
         Expanded(
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 15),
             child: Text(outperform_benchmark[index],
-                textAlign: TextAlign.center, style: TextStyle(fontSize: 9)),
+                textAlign: TextAlign.center, style: TextStyle(fontSize: 12)),
           ),
         ),
         Expanded(
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 15),
             child: Text(outperform_benchmark[index],
-                textAlign: TextAlign.center, style: TextStyle(fontSize: 9)),
+                textAlign: TextAlign.center, style: TextStyle(fontSize: 12)),
           ),
         ),
       ],
@@ -100,7 +114,7 @@ class _MutualPageState extends State<MutualPage>
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.blue[700],
-                        fontSize: 8,
+                        fontSize: 11,
                         fontWeight: FontWeight.w600)),
               ),
             ),
@@ -111,7 +125,7 @@ class _MutualPageState extends State<MutualPage>
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.blue[700],
-                        fontSize: 8,
+                        fontSize: 11,
                         fontWeight: FontWeight.w600)),
               ),
             ),
@@ -122,7 +136,7 @@ class _MutualPageState extends State<MutualPage>
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.blue[700],
-                        fontSize: 8,
+                        fontSize: 11,
                         fontWeight: FontWeight.w600)),
               ),
             ),
@@ -133,7 +147,7 @@ class _MutualPageState extends State<MutualPage>
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.blue[700],
-                        fontSize: 8,
+                        fontSize: 11,
                         fontWeight: FontWeight.w600)),
               ),
             ),
@@ -467,7 +481,7 @@ class _MutualPageState extends State<MutualPage>
                 child: Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: EdgeInsets.fromLTRB(8, 8, 8, 25),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -502,7 +516,7 @@ class _MutualPageState extends State<MutualPage>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            SizedBox(height: 68),
+                            SizedBox(height: 75),
                             Row(
                               children: [
                                 Container(
@@ -525,7 +539,7 @@ class _MutualPageState extends State<MutualPage>
                                 )
                               ],
                             ),
-                            SizedBox(height: 25),
+                            SizedBox(height: 30),
                             Row(
                               children: [
                                 Container(
@@ -548,7 +562,7 @@ class _MutualPageState extends State<MutualPage>
                                 )
                               ],
                             ),
-                            SizedBox(height: 25),
+                            SizedBox(height: 27),
                             Row(
                               children: [
                                 Container(
@@ -571,7 +585,7 @@ class _MutualPageState extends State<MutualPage>
                                 )
                               ],
                             ),
-                            SizedBox(height: 25),
+                            SizedBox(height: 30),
                             Row(
                               children: [
                                 Container(
@@ -602,7 +616,7 @@ class _MutualPageState extends State<MutualPage>
                               Text("Asset Under Management (AUM)",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      fontSize: 10,
+                                      fontSize: 12,
                                       color: Colors.blue[700],
                                       fontWeight: FontWeight.bold)),
                               headerBuilder(),
@@ -671,12 +685,16 @@ class _MutualPageState extends State<MutualPage>
                       padding: EdgeInsets.fromLTRB(5, 20, 5, 5),
                       child: Stack(
                         children: [
-                          Image.asset(
-                            "assets/bigchart.png",
+                          Center(
+                            child: Image.asset(
+                              "assets/bigchart.png",
+                              scale: 2.4,
+                            ),
                           ),
                           Column(
                             children: [
                               _headerlist(),
+                              _listBody(),
                             ],
                           ),
                         ],
@@ -1083,6 +1101,61 @@ class _MutualPageState extends State<MutualPage>
           ),
         )
       ],
+    );
+  }
+
+  _listBody() {
+    return Container(
+      height: 375,
+      child: ListView.builder(
+          itemCount: 4,
+          itemBuilder: (BuildContext context, int index) {
+            int number = index + 2;
+            return Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 15, bottom: 7),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(60, 10, 30, 10),
+                        child: Text(
+                          number.toString(),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.green[600],
+                              fontSize: 30),
+                        ),
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(fund_manager_title[index],
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.green[600],
+                                  fontSize: 13)),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            child: Text(fund_manager_harga[index],
+                                style: TextStyle(
+                                    color: Colors.green[600], fontSize: 13)),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                Divider(
+                  thickness: 1,
+                  indent: 50,
+                  endIndent: 50,
+                  color: Colors.green[200],
+                ),
+              ],
+            );
+          }),
     );
   }
 }
