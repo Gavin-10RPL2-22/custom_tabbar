@@ -11,6 +11,13 @@ class _MutualPageState extends State<MutualPage>
     with SingleTickerProviderStateMixin {
   TabController? _tabController;
 
+  List outperform_benchmark = [
+    "24 of 43",
+    "24 of 43",
+    "24 of 43",
+    "24 of 43",
+  ];
+
   final _tabs = [
     Tab(text: '1 Month'),
     Tab(text: '3 Month'),
@@ -25,6 +32,113 @@ class _MutualPageState extends State<MutualPage>
   void initState() {
     _tabController = TabController(length: 7, vsync: this);
     super.initState();
+  }
+
+  Widget _buildTableProductRows() {
+    Widget cont = Container(child: Text("No Data"));
+    if (outperform_benchmark.length > 0) {
+      List<Widget> widgets = [];
+      outperform_benchmark.asMap().forEach((index, _) {
+        widgets.add(tableBody(index));
+      });
+      cont = Column(
+        children: widgets,
+      );
+    }
+    return Container(child: cont);
+  }
+
+  Widget tableBody(int index) {
+    return Row(
+      children: [
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 15),
+            child: Text(outperform_benchmark[index],
+                textAlign: TextAlign.center, style: TextStyle(fontSize: 9)),
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 15),
+            child: Text(outperform_benchmark[index],
+                textAlign: TextAlign.center, style: TextStyle(fontSize: 9)),
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 15),
+            child: Text(outperform_benchmark[index],
+                textAlign: TextAlign.center, style: TextStyle(fontSize: 9)),
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 15),
+            child: Text(outperform_benchmark[index],
+                textAlign: TextAlign.center, style: TextStyle(fontSize: 9)),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget headerBuilder() {
+    return Container(
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(width: 3.0, color: Colors.blue.shade300),
+          ),
+        ),
+        padding: EdgeInsets.all(5),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: Text("< 100 M",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.blue[700],
+                        fontSize: 8,
+                        fontWeight: FontWeight.w600)),
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: Text("100 M - 500 M",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.blue[700],
+                        fontSize: 8,
+                        fontWeight: FontWeight.w600)),
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: Text("500 M - 1 T",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.blue[700],
+                        fontSize: 8,
+                        fontWeight: FontWeight.w600)),
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: Text("> 1 T",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.blue[700],
+                        fontSize: 8,
+                        fontWeight: FontWeight.w600)),
+              ),
+            ),
+          ],
+        ));
   }
 
   @override
@@ -380,9 +494,123 @@ class _MutualPageState extends State<MutualPage>
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(5, 20, 5, 5),
-                      child: Center(child: Text("Table")),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 68),
+                            Row(
+                              children: [
+                                Container(
+                                  height: 15,
+                                  width: 15,
+                                  decoration: BoxDecoration(
+                                    color: Colors.red[200],
+                                    shape: BoxShape.circle,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    "Equity",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.red[200],
+                                        fontSize: 12),
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(height: 25),
+                            Row(
+                              children: [
+                                Container(
+                                  height: 15,
+                                  width: 15,
+                                  decoration: BoxDecoration(
+                                    color: Colors.yellow[200],
+                                    shape: BoxShape.circle,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    "Balanced",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.yellowAccent[700],
+                                        fontSize: 12),
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(height: 25),
+                            Row(
+                              children: [
+                                Container(
+                                  height: 15,
+                                  width: 15,
+                                  decoration: BoxDecoration(
+                                    color: Colors.green[200],
+                                    shape: BoxShape.circle,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    "Fixed Income",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.green[200],
+                                        fontSize: 12),
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(height: 25),
+                            Row(
+                              children: [
+                                Container(
+                                  height: 15,
+                                  width: 15,
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue[200],
+                                    shape: BoxShape.circle,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    "Money Market",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.blue[200],
+                                        fontSize: 12),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Text("Asset Under Management (AUM)",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.blue[700],
+                                      fontWeight: FontWeight.bold)),
+                              headerBuilder(),
+                              _buildTableProductRows(),
+                            ],
+                          ),
+                        ),
+                      ],
                     )
                   ],
                 ),
@@ -441,7 +669,18 @@ class _MutualPageState extends State<MutualPage>
                     ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(5, 20, 5, 5),
-                      child: Center(child: Text("List Table")),
+                      child: Stack(
+                        children: [
+                          Image.asset(
+                            "assets/bigchart.png",
+                          ),
+                          Column(
+                            children: [
+                              _headerlist(),
+                            ],
+                          ),
+                        ],
+                      ),
                     )
                   ],
                 ),
@@ -805,6 +1044,45 @@ class _MutualPageState extends State<MutualPage>
           ),
         ),
       ),
+    );
+  }
+
+  _headerlist() {
+    return Row(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(right: 25),
+          child: Container(
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(
+              color: Colors.green[200],
+              shape: BoxShape.circle,
+            ),
+            child: Text("1",
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.white, fontSize: 43)),
+          ),
+        ),
+        Container(
+          color: Colors.green[200],
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(12, 12, 12, 6),
+                child: Text("Manulife Aset Manajemen Indonesia (MAMI)",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(12, 6, 12, 12),
+                child: Text("IDR 52,422,384,758,579"),
+              ),
+            ],
+          ),
+        )
+      ],
     );
   }
 }
