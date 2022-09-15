@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons:
   contained_tab_bar_view:
   flutter_colorful_tab:
+  syncfusion_flutter_gauges:
 
 dev_dependencies:
   flutter_test:
