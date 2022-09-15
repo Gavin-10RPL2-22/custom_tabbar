@@ -241,6 +241,155 @@ class _TabMutualState extends State<TabMutual> with TickerProviderStateMixin {
     );
   }
 
+  Widget _buildColumnValueEquity() {
+    Widget cont = Container(child: Text("No Data"));
+    if (downside_risk_value.length > 0) {
+      List<Widget> widgets = [];
+      downside_risk_value.asMap().forEach((index, _) {
+        widgets.add(valueBodyEquity(index));
+      });
+      cont = Column(
+        children: widgets,
+      );
+    }
+    return Container(child: cont);
+  }
+
+  Widget valueBodyEquity(int index) {
+    return Card(
+        color: Colors.grey[800],
+        clipBehavior: Clip.hardEdge,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+          child: Center(
+            child: Text(
+              downside_risk_value[index],
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600),
+            ),
+          ),
+        ));
+  }
+
+  Widget _buildColumnNameEquity() {
+    Widget cont = Container(child: Text("No Data"));
+    if (downside_risk_name.length > 0) {
+      List<Widget> widgets = [];
+      downside_risk_name.asMap().forEach((index, _) {
+        widgets.add(nameBodyEquity(index));
+      });
+      cont = Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: widgets,
+      );
+    }
+    return Container(child: cont);
+  }
+
+  Widget nameBodyEquity(int index) {
+    return Padding(
+      padding: EdgeInsets.only(top: 15, bottom: 15),
+      child: Text(
+        downside_risk_name[index],
+        style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+      ),
+    );
+  }
+
+  Widget _buildRowEquity() {
+    Widget cont = Container(child: Text("No Data"));
+    if (_color.length > 0) {
+      List<Widget> widgets = [];
+      _color.asMap().forEach((index, _) {
+        widgets.add(rowBodyEquity(index));
+      });
+      cont = Row(
+        children: widgets,
+      );
+    }
+    return Container(child: cont);
+  }
+
+  Widget rowBodyEquity(int index) {
+    return Expanded(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width * 0.057,
+            height: MediaQuery.of(context).size.height * 0.5,
+            decoration: BoxDecoration(
+                color: _colors[index],
+                borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(30), bottom: Radius.circular(20))),
+            child: Column(
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  width: MediaQuery.of(context).size.width * 0.1,
+                  decoration: BoxDecoration(
+                    color: _color[index],
+                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                  ),
+                  child: Center(
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.035,
+                      width: MediaQuery.of(context).size.width * 0.02,
+                      decoration: BoxDecoration(
+                        color: _colors[index],
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                      ),
+                      child: Center(
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.02,
+                          width: MediaQuery.of(context).size.width * 0.011,
+                          decoration: BoxDecoration(
+                            color: Colors.red[50],
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+                  child: _buildColumnValueEquity(),
+                )
+              ],
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(left: 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 25),
+                    child: Text(category[index],
+                        style: TextStyle(
+                            color: Colors.red[300],
+                            fontWeight: FontWeight.w600)),
+                  ),
+                  _buildColumnNameEquity(),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget headerBuilder() {
     return Container(
         decoration: BoxDecoration(
@@ -506,7 +655,7 @@ class _TabMutualState extends State<TabMutual> with TickerProviderStateMixin {
                 ),
               ),
               tabColumn_DownsideRisk(),
-              isiColumn_DownsideRisk(),
+              _buildRowEquity(),
             ],
           ),
         ),
@@ -2356,465 +2505,351 @@ class _TabMutualState extends State<TabMutual> with TickerProviderStateMixin {
     );
   }
 
-  isiColumn_DownsideRisk() {
-    return Row(
-      children: [
-        Expanded(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width * 0.057,
-                height: MediaQuery.of(context).size.height * 0.5,
-                decoration: BoxDecoration(
-                    color: Colors.red[200],
-                    borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(30), bottom: Radius.circular(20))),
-                child: Column(
-                  children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.1,
-                      width: MediaQuery.of(context).size.width * 0.1,
-                      decoration: BoxDecoration(
-                        color: Colors.red[300],
-                        borderRadius: BorderRadius.all(Radius.circular(30)),
-                      ),
-                      child: Center(
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.035,
-                          width: MediaQuery.of(context).size.width * 0.02,
-                          decoration: BoxDecoration(
-                            color: Colors.red[200],
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                          ),
-                          child: Center(
-                            child: Container(
-                              height: MediaQuery.of(context).size.height * 0.02,
-                              width: MediaQuery.of(context).size.width * 0.011,
-                              decoration: BoxDecoration(
-                                color: Colors.red[50],
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30)),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height * 0.34,
-                        child: ListView.builder(
-                          itemCount: 5,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Card(
-                                color: Colors.grey[800],
-                                clipBehavior: Clip.hardEdge,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 5, vertical: 10),
-                                  child: Center(
-                                    child: Text(
-                                      downside_risk_value[index],
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                  ),
-                                ));
-                          },
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.only(left: 12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 25),
-                        child: Text(category[0],
-                            style: TextStyle(
-                                color: Colors.red[300],
-                                fontWeight: FontWeight.w600)),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.2,
-                        height: MediaQuery.of(context).size.height * 0.35,
-                        child: ListView.builder(
-                          itemCount: 5,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Padding(
-                              padding: EdgeInsets.only(top: 15, bottom: 15),
-                              child: Text(
-                                downside_risk_name[index],
-                                style: TextStyle(
-                                    fontSize: 11, fontWeight: FontWeight.w600),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width * 0.057,
-                height: MediaQuery.of(context).size.height * 0.5,
-                decoration: BoxDecoration(
-                    color: Colors.yellow[200],
-                    borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(30), bottom: Radius.circular(20))),
-                child: Column(
-                  children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.1,
-                      width: MediaQuery.of(context).size.width * 0.1,
-                      decoration: BoxDecoration(
-                        color: Colors.yellow[600],
-                        borderRadius: BorderRadius.all(Radius.circular(30)),
-                      ),
-                      child: Center(
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.035,
-                          width: MediaQuery.of(context).size.width * 0.02,
-                          decoration: BoxDecoration(
-                            color: Colors.yellow[200],
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                          ),
-                          child: Center(
-                            child: Container(
-                              height: MediaQuery.of(context).size.height * 0.02,
-                              width: MediaQuery.of(context).size.width * 0.011,
-                              decoration: BoxDecoration(
-                                color: Colors.yellow[50],
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30)),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height * 0.34,
-                        child: ListView.builder(
-                          itemCount: 5,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Card(
-                                color: Colors.grey[800],
-                                clipBehavior: Clip.hardEdge,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 10),
-                                  child: Center(
-                                    child: Text(
-                                      downside_risk_value[index],
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                  ),
-                                ));
-                          },
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.only(left: 12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 25),
-                        child: Text(category[1],
-                            style: TextStyle(
-                                color: Colors.red[300],
-                                fontWeight: FontWeight.w600)),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.2,
-                        height: MediaQuery.of(context).size.height * 0.35,
-                        child: ListView.builder(
-                          itemCount: 5,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Padding(
-                              padding: EdgeInsets.only(top: 15, bottom: 15),
-                              child: Text(
-                                downside_risk_name[index],
-                                style: TextStyle(
-                                    fontSize: 11, fontWeight: FontWeight.w600),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width * 0.057,
-                height: MediaQuery.of(context).size.height * 0.5,
-                decoration: BoxDecoration(
-                    color: Colors.green[200],
-                    borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(30), bottom: Radius.circular(20))),
-                child: Column(
-                  children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.1,
-                      width: MediaQuery.of(context).size.width * 0.1,
-                      decoration: BoxDecoration(
-                        color: Colors.green[300],
-                        borderRadius: BorderRadius.all(Radius.circular(30)),
-                      ),
-                      child: Center(
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.035,
-                          width: MediaQuery.of(context).size.width * 0.02,
-                          decoration: BoxDecoration(
-                            color: Colors.green[200],
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                          ),
-                          child: Center(
-                            child: Container(
-                              height: MediaQuery.of(context).size.height * 0.02,
-                              width: MediaQuery.of(context).size.width * 0.011,
-                              decoration: BoxDecoration(
-                                color: Colors.green[50],
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30)),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height * 0.34,
-                        child: ListView.builder(
-                          itemCount: 5,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Card(
-                                color: Colors.grey[800],
-                                clipBehavior: Clip.hardEdge,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 5, vertical: 10),
-                                  child: Center(
-                                    child: Text(
-                                      downside_risk_value[index],
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                  ),
-                                ));
-                          },
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.only(left: 12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 25),
-                        child: Text(category[2],
-                            style: TextStyle(
-                                color: Colors.red[300],
-                                fontWeight: FontWeight.w600)),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.2,
-                        height: MediaQuery.of(context).size.height * 0.35,
-                        child: ListView.builder(
-                          itemCount: 5,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Padding(
-                              padding: EdgeInsets.only(top: 15, bottom: 15),
-                              child: Text(
-                                downside_risk_name[index],
-                                style: TextStyle(
-                                    fontSize: 11, fontWeight: FontWeight.w600),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width * 0.057,
-                height: MediaQuery.of(context).size.height * 0.5,
-                decoration: BoxDecoration(
-                    color: Colors.blue[200],
-                    borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(30), bottom: Radius.circular(20))),
-                child: Column(
-                  children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.1,
-                      width: MediaQuery.of(context).size.width * 0.1,
-                      decoration: BoxDecoration(
-                        color: Colors.blue[300],
-                        borderRadius: BorderRadius.all(Radius.circular(30)),
-                      ),
-                      child: Center(
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.035,
-                          width: MediaQuery.of(context).size.width * 0.02,
-                          decoration: BoxDecoration(
-                            color: Colors.blue[200],
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                          ),
-                          child: Center(
-                            child: Container(
-                              height: MediaQuery.of(context).size.height * 0.02,
-                              width: MediaQuery.of(context).size.width * 0.011,
-                              decoration: BoxDecoration(
-                                color: Colors.blue[50],
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30)),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height * 0.34,
-                        child: ListView.builder(
-                          itemCount: 5,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Card(
-                                color: Colors.grey[800],
-                                clipBehavior: Clip.hardEdge,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 5, vertical: 10),
-                                  child: Center(
-                                    child: Text(
-                                      downside_risk_value[index],
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                  ),
-                                ));
-                          },
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.only(left: 12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 25),
-                        child: Text(category[3],
-                            style: TextStyle(
-                                color: Colors.red[300],
-                                fontWeight: FontWeight.w600)),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.2,
-                        height: MediaQuery.of(context).size.height * 0.4,
-                        child: ListView.builder(
-                          itemCount: 5,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Padding(
-                              padding: EdgeInsets.only(top: 15, bottom: 15),
-                              child: Text(
-                                downside_risk_name[index],
-                                style: TextStyle(
-                                    fontSize: 11, fontWeight: FontWeight.w600),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
+  // isiColumn_DownsideRisk() {
+  //   return Row(
+  //     children: [
+  //       // Expanded(
+  //       //   child: Row(
+  //       //     crossAxisAlignment: CrossAxisAlignment.start,
+  //       //     mainAxisAlignment: MainAxisAlignment.start,
+  //       //     children: [
+  //       //       Container(
+  //       //         width: MediaQuery.of(context).size.width * 0.057,
+  //       //         height: MediaQuery.of(context).size.height * 0.5,
+  //       //         decoration: BoxDecoration(
+  //       //             color: Colors.yellow[200],
+  //       //             borderRadius: BorderRadius.vertical(
+  //       //                 top: Radius.circular(30), bottom: Radius.circular(20))),
+  //       //         child: Column(
+  //       //           children: [
+  //       //             Container(
+  //       //               height: MediaQuery.of(context).size.height * 0.1,
+  //       //               width: MediaQuery.of(context).size.width * 0.1,
+  //       //               decoration: BoxDecoration(
+  //       //                 color: Colors.yellow[600],
+  //       //                 borderRadius: BorderRadius.all(Radius.circular(30)),
+  //       //               ),
+  //       //               child: Center(
+  //       //                 child: Container(
+  //       //                   height: MediaQuery.of(context).size.height * 0.035,
+  //       //                   width: MediaQuery.of(context).size.width * 0.02,
+  //       //                   decoration: BoxDecoration(
+  //       //                     color: Colors.yellow[200],
+  //       //                     borderRadius: BorderRadius.all(Radius.circular(30)),
+  //       //                   ),
+  //       //                   child: Center(
+  //       //                     child: Container(
+  //       //                       height: MediaQuery.of(context).size.height * 0.02,
+  //       //                       width: MediaQuery.of(context).size.width * 0.011,
+  //       //                       decoration: BoxDecoration(
+  //       //                         color: Colors.yellow[50],
+  //       //                         borderRadius:
+  //       //                             BorderRadius.all(Radius.circular(30)),
+  //       //                       ),
+  //       //                     ),
+  //       //                   ),
+  //       //                 ),
+  //       //               ),
+  //       //             ),
+  //       //             Padding(
+  //       //               padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+  //       //               child: Container(
+  //       //                 height: MediaQuery.of(context).size.height * 0.34,
+  //       //                 child: ListView.builder(
+  //       //                   itemCount: 5,
+  //       //                   itemBuilder: (BuildContext context, int index) {
+  //       //                     return Card(
+  //       //                         color: Colors.grey[800],
+  //       //                         clipBehavior: Clip.hardEdge,
+  //       //                         shape: RoundedRectangleBorder(
+  //       //                           borderRadius: BorderRadius.circular(8),
+  //       //                         ),
+  //       //                         child: Padding(
+  //       //                           padding: EdgeInsets.symmetric(vertical: 10),
+  //       //                           child: Center(
+  //       //                             child: Text(
+  //       //                               downside_risk_value[index],
+  //       //                               style: TextStyle(
+  //       //                                   color: Colors.white,
+  //       //                                   fontSize: 12,
+  //       //                                   fontWeight: FontWeight.w600),
+  //       //                             ),
+  //       //                           ),
+  //       //                         ));
+  //       //                   },
+  //       //                 ),
+  //       //               ),
+  //       //             )
+  //       //           ],
+  //       //         ),
+  //       //       ),
+  //       //       Expanded(
+  //       //         child: Padding(
+  //       //           padding: EdgeInsets.only(left: 12),
+  //       //           child: Column(
+  //       //             crossAxisAlignment: CrossAxisAlignment.start,
+  //       //             mainAxisAlignment: MainAxisAlignment.start,
+  //       //             children: [
+  //       //               Padding(
+  //       //                 padding: EdgeInsets.symmetric(vertical: 25),
+  //       //                 child: Text(category[1],
+  //       //                     style: TextStyle(
+  //       //                         color: Colors.red[300],
+  //       //                         fontWeight: FontWeight.w600)),
+  //       //               ),
+  //       //               Container(
+  //       //                 width: MediaQuery.of(context).size.width * 0.2,
+  //       //                 height: MediaQuery.of(context).size.height * 0.35,
+  //       //                 child: ListView.builder(
+  //       //                   itemCount: 5,
+  //       //                   itemBuilder: (BuildContext context, int index) {
+  //       //                     return Padding(
+  //       //                       padding: EdgeInsets.only(top: 15, bottom: 15),
+  //       //                       child: Text(
+  //       //                         downside_risk_name[index],
+  //       //                         style: TextStyle(
+  //       //                             fontSize: 11, fontWeight: FontWeight.w600),
+  //       //                       ),
+  //       //                     );
+  //       //                   },
+  //       //                 ),
+  //       //               ),
+  //       //             ],
+  //       //           ),
+  //       //         ),
+  //       //       ),
+  //       //     ],
+  //       //   ),
+  //       // ),
+  //       // Expanded(
+  //       //   child: Row(
+  //       //     crossAxisAlignment: CrossAxisAlignment.start,
+  //       //     mainAxisAlignment: MainAxisAlignment.start,
+  //       //     children: [
+  //       //       Container(
+  //       //         width: MediaQuery.of(context).size.width * 0.057,
+  //       //         height: MediaQuery.of(context).size.height * 0.5,
+  //       //         decoration: BoxDecoration(
+  //       //             color: Colors.green[200],
+  //       //             borderRadius: BorderRadius.vertical(
+  //       //                 top: Radius.circular(30), bottom: Radius.circular(20))),
+  //       //         child: Column(
+  //       //           children: [
+  //       //             Container(
+  //       //               height: MediaQuery.of(context).size.height * 0.1,
+  //       //               width: MediaQuery.of(context).size.width * 0.1,
+  //       //               decoration: BoxDecoration(
+  //       //                 color: Colors.green[300],
+  //       //                 borderRadius: BorderRadius.all(Radius.circular(30)),
+  //       //               ),
+  //       //               child: Center(
+  //       //                 child: Container(
+  //       //                   height: MediaQuery.of(context).size.height * 0.035,
+  //       //                   width: MediaQuery.of(context).size.width * 0.02,
+  //       //                   decoration: BoxDecoration(
+  //       //                     color: Colors.green[200],
+  //       //                     borderRadius: BorderRadius.all(Radius.circular(30)),
+  //       //                   ),
+  //       //                   child: Center(
+  //       //                     child: Container(
+  //       //                       height: MediaQuery.of(context).size.height * 0.02,
+  //       //                       width: MediaQuery.of(context).size.width * 0.011,
+  //       //                       decoration: BoxDecoration(
+  //       //                         color: Colors.green[50],
+  //       //                         borderRadius:
+  //       //                             BorderRadius.all(Radius.circular(30)),
+  //       //                       ),
+  //       //                     ),
+  //       //                   ),
+  //       //                 ),
+  //       //               ),
+  //       //             ),
+  //       //             Padding(
+  //       //               padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+  //       //               child: Container(
+  //       //                 height: MediaQuery.of(context).size.height * 0.34,
+  //       //                 child: ListView.builder(
+  //       //                   itemCount: 5,
+  //       //                   itemBuilder: (BuildContext context, int index) {
+  //       //                     return Card(
+  //       //                         color: Colors.grey[800],
+  //       //                         clipBehavior: Clip.hardEdge,
+  //       //                         shape: RoundedRectangleBorder(
+  //       //                           borderRadius: BorderRadius.circular(8),
+  //       //                         ),
+  //       //                         child: Padding(
+  //       //                           padding: EdgeInsets.symmetric(
+  //       //                               horizontal: 5, vertical: 10),
+  //       //                           child: Center(
+  //       //                             child: Text(
+  //       //                               downside_risk_value[index],
+  //       //                               style: TextStyle(
+  //       //                                   color: Colors.white,
+  //       //                                   fontSize: 12,
+  //       //                                   fontWeight: FontWeight.w600),
+  //       //                             ),
+  //       //                           ),
+  //       //                         ));
+  //       //                   },
+  //       //                 ),
+  //       //               ),
+  //       //             )
+  //       //           ],
+  //       //         ),
+  //       //       ),
+  //       //       Expanded(
+  //       //         child: Padding(
+  //       //           padding: EdgeInsets.only(left: 12),
+  //       //           child: Column(
+  //       //             crossAxisAlignment: CrossAxisAlignment.start,
+  //       //             mainAxisAlignment: MainAxisAlignment.start,
+  //       //             children: [
+  //       //               Padding(
+  //       //                 padding: EdgeInsets.symmetric(vertical: 25),
+  //       //                 child: Text(category[2],
+  //       //                     style: TextStyle(
+  //       //                         color: Colors.red[300],
+  //       //                         fontWeight: FontWeight.w600)),
+  //       //               ),
+  //       //               Container(
+  //       //                 width: MediaQuery.of(context).size.width * 0.2,
+  //       //                 height: MediaQuery.of(context).size.height * 0.35,
+  //       //                 child: ListView.builder(
+  //       //                   itemCount: 5,
+  //       //                   itemBuilder: (BuildContext context, int index) {
+  //       //                     return Padding(
+  //       //                       padding: EdgeInsets.only(top: 15, bottom: 15),
+  //       //                       child: Text(
+  //       //                         downside_risk_name[index],
+  //       //                         style: TextStyle(
+  //       //                             fontSize: 11, fontWeight: FontWeight.w600),
+  //       //                       ),
+  //       //                     );
+  //       //                   },
+  //       //                 ),
+  //       //               ),
+  //       //             ],
+  //       //           ),
+  //       //         ),
+  //       //       ),
+  //       //     ],
+  //       //   ),
+  //       // ),
+  //       // Expanded(
+  //       //   child: Row(
+  //       //     crossAxisAlignment: CrossAxisAlignment.start,
+  //       //     mainAxisAlignment: MainAxisAlignment.start,
+  //       //     children: [
+  //       //       Container(
+  //       //         width: MediaQuery.of(context).size.width * 0.057,
+  //       //         height: MediaQuery.of(context).size.height * 0.5,
+  //       //         decoration: BoxDecoration(
+  //       //             color: Colors.blue[200],
+  //       //             borderRadius: BorderRadius.vertical(
+  //       //                 top: Radius.circular(30), bottom: Radius.circular(20))),
+  //       //         child: Column(
+  //       //           children: [
+  //       //             Container(
+  //       //               height: MediaQuery.of(context).size.height * 0.1,
+  //       //               width: MediaQuery.of(context).size.width * 0.1,
+  //       //               decoration: BoxDecoration(
+  //       //                 color: Colors.blue[300],
+  //       //                 borderRadius: BorderRadius.all(Radius.circular(30)),
+  //       //               ),
+  //       //               child: Center(
+  //       //                 child: Container(
+  //       //                   height: MediaQuery.of(context).size.height * 0.035,
+  //       //                   width: MediaQuery.of(context).size.width * 0.02,
+  //       //                   decoration: BoxDecoration(
+  //       //                     color: Colors.blue[200],
+  //       //                     borderRadius: BorderRadius.all(Radius.circular(30)),
+  //       //                   ),
+  //       //                   child: Center(
+  //       //                     child: Container(
+  //       //                       height: MediaQuery.of(context).size.height * 0.02,
+  //       //                       width: MediaQuery.of(context).size.width * 0.011,
+  //       //                       decoration: BoxDecoration(
+  //       //                         color: Colors.blue[50],
+  //       //                         borderRadius:
+  //       //                             BorderRadius.all(Radius.circular(30)),
+  //       //                       ),
+  //       //                     ),
+  //       //                   ),
+  //       //                 ),
+  //       //               ),
+  //       //             ),
+  //       //             Padding(
+  //       //               padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+  //       //               child: Container(
+  //       //                 height: MediaQuery.of(context).size.height * 0.34,
+  //       //                 child: ListView.builder(
+  //       //                   itemCount: 5,
+  //       //                   itemBuilder: (BuildContext context, int index) {
+  //       //                     return Card(
+  //       //                         color: Colors.grey[800],
+  //       //                         clipBehavior: Clip.hardEdge,
+  //       //                         shape: RoundedRectangleBorder(
+  //       //                           borderRadius: BorderRadius.circular(8),
+  //       //                         ),
+  //       //                         child: Padding(
+  //       //                           padding: EdgeInsets.symmetric(
+  //       //                               horizontal: 5, vertical: 10),
+  //       //                           child: Center(
+  //       //                             child: Text(
+  //       //                               downside_risk_value[index],
+  //       //                               style: TextStyle(
+  //       //                                   color: Colors.white,
+  //       //                                   fontSize: 12,
+  //       //                                   fontWeight: FontWeight.w600),
+  //       //                             ),
+  //       //                           ),
+  //       //                         ));
+  //       //                   },
+  //       //                 ),
+  //       //               ),
+  //       //             )
+  //       //           ],
+  //       //         ),
+  //       //       ),
+  //       //       Expanded(
+  //       //         child: Padding(
+  //       //           padding: EdgeInsets.only(left: 12),
+  //       //           child: Column(
+  //       //             crossAxisAlignment: CrossAxisAlignment.start,
+  //       //             mainAxisAlignment: MainAxisAlignment.start,
+  //       //             children: [
+  //       //               Padding(
+  //       //                 padding: EdgeInsets.symmetric(vertical: 25),
+  //       //                 child: Text(category[3],
+  //       //                     style: TextStyle(
+  //       //                         color: Colors.red[300],
+  //       //                         fontWeight: FontWeight.w600)),
+  //       //               ),
+  //       //               Container(
+  //       //                 width: MediaQuery.of(context).size.width * 0.2,
+  //       //                 height: MediaQuery.of(context).size.height * 0.4,
+  //       //                 child: ListView.builder(
+  //       //                   itemCount: 5,
+  //       //                   itemBuilder: (BuildContext context, int index) {
+  //       //                     return Padding(
+  //       //                       padding: EdgeInsets.only(top: 15, bottom: 15),
+  //       //                       child: Text(
+  //       //                         downside_risk_name[index],
+  //       //                         style: TextStyle(
+  //       //                             fontSize: 11, fontWeight: FontWeight.w600),
+  //       //                       ),
+  //       //                     );
+  //       //                   },
+  //       //                 ),
+  //       //               ),
+  //       //             ],
+  //       //           ),
+  //       //         ),
+  //       //       ),
+  //       //     ],
+  //       //   ),
+  //       // ),
+  //     ],
+  //   );
+  // }
 }
