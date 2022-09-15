@@ -81,11 +81,27 @@ class _TabMutualState extends State<TabMutual> with TickerProviderStateMixin {
     "2.30",
   ];
 
-  List sharpe_ratio_catego = [
+  List category = [
     "Equity",
     "Balanced",
     "Fixed Income",
     "Money Market",
+  ];
+
+  List downside_risk_value = [
+    "7.52",
+    "7.83",
+    "8.58",
+    "9.43",
+    "9.68",
+  ];
+
+  List downside_risk_name = [
+    "Victoria Equity Maxima",
+    "Simas Equity Syariah",
+    "Pacific Equity Optimum Fund",
+    "Shinhan Mitra Maxima Ekuitas",
+    "Pinnacle Dana Ekuitas Nusantara",
   ];
 
   final _tabs_indus1 = [
@@ -117,6 +133,13 @@ class _TabMutualState extends State<TabMutual> with TickerProviderStateMixin {
     Colors.yellow[600],
     Colors.green[200],
     Colors.blue[200],
+  ];
+
+  List<Color?> _color = [
+    Colors.red[300],
+    Colors.yellow[700],
+    Colors.green[300],
+    Colors.blue[300],
   ];
 
   @override
@@ -482,30 +505,8 @@ class _TabMutualState extends State<TabMutual> with TickerProviderStateMixin {
                   ],
                 ),
               ),
-              Align(
-                alignment: Alignment.topRight,
-                child: Padding(
-                  padding: EdgeInsets.all(12),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.57,
-                    decoration: BoxDecoration(
-                        color: Colors.blue[200],
-                        borderRadius: BorderRadius.circular(10)),
-                    child: TabBar(
-                      padding: EdgeInsets.symmetric(horizontal: 12),
-                      controller: _tabController_produc3,
-                      indicator: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                          border: Border.all(
-                              color: Colors.blue.shade300, width: 1)),
-                      labelColor: Colors.blue[200],
-                      unselectedLabelColor: Colors.white,
-                      tabs: _tabs_produc,
-                    ),
-                  ),
-                ),
-              ),
+              tabColumn_DownsideRisk(),
+              isiColumn_DownsideRisk(),
             ],
           ),
         ),
@@ -2106,7 +2107,7 @@ class _TabMutualState extends State<TabMutual> with TickerProviderStateMixin {
                   children: [
                     Expanded(
                       child: Text(
-                        sharpe_ratio_catego[index],
+                        category[index],
                         style: TextStyle(fontWeight: FontWeight.w500),
                       ),
                     ),
@@ -2327,6 +2328,493 @@ class _TabMutualState extends State<TabMutual> with TickerProviderStateMixin {
           );
         },
       ),
+    );
+  }
+
+  tabColumn_DownsideRisk() {
+    return Align(
+      alignment: Alignment.topRight,
+      child: Padding(
+        padding: EdgeInsets.all(12),
+        child: Container(
+          width: MediaQuery.of(context).size.width * 0.57,
+          decoration: BoxDecoration(
+              color: Colors.blue[200], borderRadius: BorderRadius.circular(10)),
+          child: TabBar(
+            padding: EdgeInsets.symmetric(horizontal: 12),
+            controller: _tabController_produc3,
+            indicator: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+                border: Border.all(color: Colors.blue.shade300, width: 1)),
+            labelColor: Colors.blue[200],
+            unselectedLabelColor: Colors.white,
+            tabs: _tabs_produc,
+          ),
+        ),
+      ),
+    );
+  }
+
+  isiColumn_DownsideRisk() {
+    return Row(
+      children: [
+        Expanded(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width * 0.057,
+                height: MediaQuery.of(context).size.height * 0.5,
+                decoration: BoxDecoration(
+                    color: Colors.red[200],
+                    borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(30), bottom: Radius.circular(20))),
+                child: Column(
+                  children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.1,
+                      width: MediaQuery.of(context).size.width * 0.1,
+                      decoration: BoxDecoration(
+                        color: Colors.red[300],
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                      ),
+                      child: Center(
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.035,
+                          width: MediaQuery.of(context).size.width * 0.02,
+                          decoration: BoxDecoration(
+                            color: Colors.red[200],
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                          ),
+                          child: Center(
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.02,
+                              width: MediaQuery.of(context).size.width * 0.011,
+                              decoration: BoxDecoration(
+                                color: Colors.red[50],
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30)),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.34,
+                        child: ListView.builder(
+                          itemCount: 5,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Card(
+                                color: Colors.grey[800],
+                                clipBehavior: Clip.hardEdge,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 5, vertical: 10),
+                                  child: Center(
+                                    child: Text(
+                                      downside_risk_value[index],
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ),
+                                ));
+                          },
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.only(left: 12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 25),
+                        child: Text(category[0],
+                            style: TextStyle(
+                                color: Colors.red[300],
+                                fontWeight: FontWeight.w600)),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.2,
+                        height: MediaQuery.of(context).size.height * 0.35,
+                        child: ListView.builder(
+                          itemCount: 5,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding: EdgeInsets.only(top: 15, bottom: 15),
+                              child: Text(
+                                downside_risk_name[index],
+                                style: TextStyle(
+                                    fontSize: 11, fontWeight: FontWeight.w600),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width * 0.057,
+                height: MediaQuery.of(context).size.height * 0.5,
+                decoration: BoxDecoration(
+                    color: Colors.yellow[200],
+                    borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(30), bottom: Radius.circular(20))),
+                child: Column(
+                  children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.1,
+                      width: MediaQuery.of(context).size.width * 0.1,
+                      decoration: BoxDecoration(
+                        color: Colors.yellow[600],
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                      ),
+                      child: Center(
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.035,
+                          width: MediaQuery.of(context).size.width * 0.02,
+                          decoration: BoxDecoration(
+                            color: Colors.yellow[200],
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                          ),
+                          child: Center(
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.02,
+                              width: MediaQuery.of(context).size.width * 0.011,
+                              decoration: BoxDecoration(
+                                color: Colors.yellow[50],
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30)),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.34,
+                        child: ListView.builder(
+                          itemCount: 5,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Card(
+                                color: Colors.grey[800],
+                                clipBehavior: Clip.hardEdge,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 10),
+                                  child: Center(
+                                    child: Text(
+                                      downside_risk_value[index],
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ),
+                                ));
+                          },
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.only(left: 12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 25),
+                        child: Text(category[1],
+                            style: TextStyle(
+                                color: Colors.red[300],
+                                fontWeight: FontWeight.w600)),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.2,
+                        height: MediaQuery.of(context).size.height * 0.35,
+                        child: ListView.builder(
+                          itemCount: 5,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding: EdgeInsets.only(top: 15, bottom: 15),
+                              child: Text(
+                                downside_risk_name[index],
+                                style: TextStyle(
+                                    fontSize: 11, fontWeight: FontWeight.w600),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width * 0.057,
+                height: MediaQuery.of(context).size.height * 0.5,
+                decoration: BoxDecoration(
+                    color: Colors.green[200],
+                    borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(30), bottom: Radius.circular(20))),
+                child: Column(
+                  children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.1,
+                      width: MediaQuery.of(context).size.width * 0.1,
+                      decoration: BoxDecoration(
+                        color: Colors.green[300],
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                      ),
+                      child: Center(
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.035,
+                          width: MediaQuery.of(context).size.width * 0.02,
+                          decoration: BoxDecoration(
+                            color: Colors.green[200],
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                          ),
+                          child: Center(
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.02,
+                              width: MediaQuery.of(context).size.width * 0.011,
+                              decoration: BoxDecoration(
+                                color: Colors.green[50],
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30)),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.34,
+                        child: ListView.builder(
+                          itemCount: 5,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Card(
+                                color: Colors.grey[800],
+                                clipBehavior: Clip.hardEdge,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 5, vertical: 10),
+                                  child: Center(
+                                    child: Text(
+                                      downside_risk_value[index],
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ),
+                                ));
+                          },
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.only(left: 12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 25),
+                        child: Text(category[2],
+                            style: TextStyle(
+                                color: Colors.red[300],
+                                fontWeight: FontWeight.w600)),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.2,
+                        height: MediaQuery.of(context).size.height * 0.35,
+                        child: ListView.builder(
+                          itemCount: 5,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding: EdgeInsets.only(top: 15, bottom: 15),
+                              child: Text(
+                                downside_risk_name[index],
+                                style: TextStyle(
+                                    fontSize: 11, fontWeight: FontWeight.w600),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width * 0.057,
+                height: MediaQuery.of(context).size.height * 0.5,
+                decoration: BoxDecoration(
+                    color: Colors.blue[200],
+                    borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(30), bottom: Radius.circular(20))),
+                child: Column(
+                  children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.1,
+                      width: MediaQuery.of(context).size.width * 0.1,
+                      decoration: BoxDecoration(
+                        color: Colors.blue[300],
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                      ),
+                      child: Center(
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.035,
+                          width: MediaQuery.of(context).size.width * 0.02,
+                          decoration: BoxDecoration(
+                            color: Colors.blue[200],
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                          ),
+                          child: Center(
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.02,
+                              width: MediaQuery.of(context).size.width * 0.011,
+                              decoration: BoxDecoration(
+                                color: Colors.blue[50],
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30)),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.34,
+                        child: ListView.builder(
+                          itemCount: 5,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Card(
+                                color: Colors.grey[800],
+                                clipBehavior: Clip.hardEdge,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 5, vertical: 10),
+                                  child: Center(
+                                    child: Text(
+                                      downside_risk_value[index],
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ),
+                                ));
+                          },
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.only(left: 12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 25),
+                        child: Text(category[3],
+                            style: TextStyle(
+                                color: Colors.red[300],
+                                fontWeight: FontWeight.w600)),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.2,
+                        height: MediaQuery.of(context).size.height * 0.4,
+                        child: ListView.builder(
+                          itemCount: 5,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding: EdgeInsets.only(top: 15, bottom: 15),
+                              child: Text(
+                                downside_risk_name[index],
+                                style: TextStyle(
+                                    fontSize: 11, fontWeight: FontWeight.w600),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
