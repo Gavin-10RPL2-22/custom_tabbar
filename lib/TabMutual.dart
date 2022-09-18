@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class TabMutual extends StatefulWidget {
   const TabMutual({Key? key}) : super(key: key);
@@ -241,12 +242,12 @@ class _TabMutualState extends State<TabMutual> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildColumnValueEquity() {
+  Widget _buildColumnValueDownsideRisk() {
     Widget cont = Container(child: Text("No Data"));
     if (downside_risk_value.length > 0) {
       List<Widget> widgets = [];
       downside_risk_value.asMap().forEach((index, _) {
-        widgets.add(valueBodyEquity(index));
+        widgets.add(valueBodyDownsideRisk(index));
       });
       cont = Column(
         children: widgets,
@@ -255,7 +256,7 @@ class _TabMutualState extends State<TabMutual> with TickerProviderStateMixin {
     return Container(child: cont);
   }
 
-  Widget valueBodyEquity(int index) {
+  Widget valueBodyDownsideRisk(int index) {
     return Card(
         color: Colors.grey[800],
         clipBehavior: Clip.hardEdge,
@@ -276,12 +277,12 @@ class _TabMutualState extends State<TabMutual> with TickerProviderStateMixin {
         ));
   }
 
-  Widget _buildColumnNameEquity() {
+  Widget _buildColumnNameDownsideRisk() {
     Widget cont = Container(child: Text("No Data"));
     if (downside_risk_name.length > 0) {
       List<Widget> widgets = [];
       downside_risk_name.asMap().forEach((index, _) {
-        widgets.add(nameBodyEquity(index));
+        widgets.add(nameBodyDownsideRisk(index));
       });
       cont = Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -292,7 +293,7 @@ class _TabMutualState extends State<TabMutual> with TickerProviderStateMixin {
     return Container(child: cont);
   }
 
-  Widget nameBodyEquity(int index) {
+  Widget nameBodyDownsideRisk(int index) {
     return Padding(
       padding: EdgeInsets.only(top: 15, bottom: 15),
       child: Text(
@@ -302,12 +303,12 @@ class _TabMutualState extends State<TabMutual> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildRowEquity() {
+  Widget _buildRowDownsideRisk() {
     Widget cont = Container(child: Text("No Data"));
     if (_color.length > 0) {
       List<Widget> widgets = [];
       _color.asMap().forEach((index, _) {
-        widgets.add(rowBodyEquity(index));
+        widgets.add(rowBodyDownsideRisk(index));
       });
       cont = Row(
         children: widgets,
@@ -316,7 +317,7 @@ class _TabMutualState extends State<TabMutual> with TickerProviderStateMixin {
     return Container(child: cont);
   }
 
-  Widget rowBodyEquity(int index) {
+  Widget rowBodyDownsideRisk(int index) {
     return Expanded(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -361,7 +362,7 @@ class _TabMutualState extends State<TabMutual> with TickerProviderStateMixin {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-                  child: _buildColumnValueEquity(),
+                  child: _buildColumnValueDownsideRisk(),
                 )
               ],
             ),
@@ -380,7 +381,7 @@ class _TabMutualState extends State<TabMutual> with TickerProviderStateMixin {
                             color: Colors.red[300],
                             fontWeight: FontWeight.w600)),
                   ),
-                  _buildColumnNameEquity(),
+                  _buildColumnNameDownsideRisk(),
                 ],
               ),
             ),
@@ -499,240 +500,6 @@ class _TabMutualState extends State<TabMutual> with TickerProviderStateMixin {
                           )
                         : Container(),
           ],
-        ),
-      ),
-    );
-  }
-
-  Column_produ_1() {
-    return Padding(
-      padding: EdgeInsets.all(12),
-      child: Card(
-        clipBehavior: Clip.hardEdge,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        elevation: 5,
-        shadowColor: Colors.grey,
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(15, 15, 15, 30),
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        Positioned(
-                          top: 9,
-                          left: 13,
-                          child: Container(
-                            color: Colors.grey[200],
-                            height: MediaQuery.of(context).size.height * 0.02,
-                            width: MediaQuery.of(context).size.width * 0.16,
-                          ),
-                        ),
-                        Text("Best Perform Fund (Return)",
-                            style: TextStyle(
-                                color: Colors.blue[700],
-                                fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                    Text(
-                        "This category indicates appreciation in the value of fund investment over a period compared to the initial investment made.",
-                        style: TextStyle(fontSize: 10)),
-                    Image.asset("assets/share.png", scale: 1.5),
-                  ],
-                ),
-              ),
-              tabColumn_PerformFund(),
-              isiColumn_PerformFund(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Column_produ_2() {
-    return Padding(
-      padding: EdgeInsets.all(12),
-      child: Card(
-        clipBehavior: Clip.hardEdge,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        elevation: 5,
-        shadowColor: Colors.grey,
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(15, 15, 15, 30),
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        Positioned(
-                          top: 9,
-                          left: 13,
-                          child: Container(
-                            color: Colors.grey[200],
-                            height: MediaQuery.of(context).size.height * 0.02,
-                            width: MediaQuery.of(context).size.width * 0.14,
-                          ),
-                        ),
-                        Text("Best Sharpe Ratio Fund",
-                            style: TextStyle(
-                                color: Colors.blue[700],
-                                fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                    Text(
-                        "This category indicates the degree of returns generated by fund investment after taking into account all kinds of risks.",
-                        style: TextStyle(fontSize: 10)),
-                    Image.asset("assets/share.png", scale: 1.5),
-                  ],
-                ),
-              ),
-              tabColumn_SharpeRatio(),
-              isiColumn_SharpeRatio(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Column_produ_3() {
-    return Padding(
-      padding: EdgeInsets.all(12),
-      child: Card(
-        clipBehavior: Clip.hardEdge,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        elevation: 5,
-        shadowColor: Colors.grey,
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(15, 15, 15, 30),
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        Positioned(
-                          top: 9,
-                          left: 13,
-                          child: Container(
-                            color: Colors.grey[200],
-                            height: MediaQuery.of(context).size.height * 0.02,
-                            width: MediaQuery.of(context).size.width * 0.13,
-                          ),
-                        ),
-                        Text("Lowest Downside Risk",
-                            style: TextStyle(
-                                color: Colors.blue[700],
-                                fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                    Text(
-                        "This category represents fund's ability to manage the uncertainty of the actual return being below the expected return.",
-                        style: TextStyle(fontSize: 10)),
-                    Image.asset("assets/share.png", scale: 1.5),
-                  ],
-                ),
-              ),
-              tabColumn_DownsideRisk(),
-              _buildRowEquity(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Column_produ_4() {
-    return Padding(
-      padding: EdgeInsets.all(12),
-      child: Card(
-        clipBehavior: Clip.hardEdge,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        elevation: 5,
-        shadowColor: Colors.grey,
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(15, 15, 15, 30),
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        Positioned(
-                          top: 9,
-                          left: 13,
-                          child: Container(
-                            color: Colors.grey[200],
-                            height: MediaQuery.of(context).size.height * 0.02,
-                            width: MediaQuery.of(context).size.width * 0.1,
-                          ),
-                        ),
-                        Text("Best Value at Risk",
-                            style: TextStyle(
-                                color: Colors.blue[700],
-                                fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                    Text(
-                        "This category represents the maximum possible loss of the investment made.",
-                        style: TextStyle(fontSize: 10)),
-                    Image.asset("assets/share.png", scale: 1.5),
-                  ],
-                ),
-              ),
-              Align(
-                alignment: Alignment.topRight,
-                child: Padding(
-                  padding: EdgeInsets.all(12),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.57,
-                    decoration: BoxDecoration(
-                        color: Colors.blue[200],
-                        borderRadius: BorderRadius.circular(10)),
-                    child: TabBar(
-                      padding: EdgeInsets.symmetric(horizontal: 12),
-                      controller: _tabController_produc4,
-                      indicator: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                          border: Border.all(
-                              color: Colors.blue.shade300, width: 1)),
-                      labelColor: Colors.blue[200],
-                      unselectedLabelColor: Colors.white,
-                      tabs: _tabs_produc,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
         ),
       ),
     );
@@ -1610,6 +1377,218 @@ class _TabMutualState extends State<TabMutual> with TickerProviderStateMixin {
           ),
         ),
       ],
+    );
+  }
+
+  Column_produ_1() {
+    return Padding(
+      padding: EdgeInsets.all(12),
+      child: Card(
+        clipBehavior: Clip.hardEdge,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        elevation: 5,
+        shadowColor: Colors.grey,
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(15, 15, 15, 30),
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Positioned(
+                          top: 9,
+                          left: 13,
+                          child: Container(
+                            color: Colors.grey[200],
+                            height: MediaQuery.of(context).size.height * 0.02,
+                            width: MediaQuery.of(context).size.width * 0.16,
+                          ),
+                        ),
+                        Text("Best Perform Fund (Return)",
+                            style: TextStyle(
+                                color: Colors.blue[700],
+                                fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                    Text(
+                        "This category indicates appreciation in the value of fund investment over a period compared to the initial investment made.",
+                        style: TextStyle(fontSize: 10)),
+                    Image.asset("assets/share.png", scale: 1.5),
+                  ],
+                ),
+              ),
+              tabColumn_PerformFund(),
+              isiColumn_PerformFund(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Column_produ_2() {
+    return Padding(
+      padding: EdgeInsets.all(12),
+      child: Card(
+        clipBehavior: Clip.hardEdge,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        elevation: 5,
+        shadowColor: Colors.grey,
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(15, 15, 15, 30),
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Positioned(
+                          top: 9,
+                          left: 13,
+                          child: Container(
+                            color: Colors.grey[200],
+                            height: MediaQuery.of(context).size.height * 0.02,
+                            width: MediaQuery.of(context).size.width * 0.14,
+                          ),
+                        ),
+                        Text("Best Sharpe Ratio Fund",
+                            style: TextStyle(
+                                color: Colors.blue[700],
+                                fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                    Text(
+                        "This category indicates the degree of returns generated by fund investment after taking into account all kinds of risks.",
+                        style: TextStyle(fontSize: 10)),
+                    Image.asset("assets/share.png", scale: 1.5),
+                  ],
+                ),
+              ),
+              tabColumn_SharpeRatio(),
+              isiColumn_SharpeRatio(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Column_produ_3() {
+    return Padding(
+      padding: EdgeInsets.all(12),
+      child: Card(
+        clipBehavior: Clip.hardEdge,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        elevation: 5,
+        shadowColor: Colors.grey,
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(15, 15, 15, 30),
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Positioned(
+                          top: 9,
+                          left: 13,
+                          child: Container(
+                            color: Colors.grey[200],
+                            height: MediaQuery.of(context).size.height * 0.02,
+                            width: MediaQuery.of(context).size.width * 0.13,
+                          ),
+                        ),
+                        Text("Lowest Downside Risk",
+                            style: TextStyle(
+                                color: Colors.blue[700],
+                                fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                    Text(
+                        "This category represents fund's ability to manage the uncertainty of the actual return being below the expected return.",
+                        style: TextStyle(fontSize: 10)),
+                    Image.asset("assets/share.png", scale: 1.5),
+                  ],
+                ),
+              ),
+              tabColumn_DownsideRisk(),
+              _buildRowDownsideRisk(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Column_produ_4() {
+    return Padding(
+      padding: EdgeInsets.all(12),
+      child: Card(
+        clipBehavior: Clip.hardEdge,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        elevation: 5,
+        shadowColor: Colors.grey,
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(15, 15, 15, 30),
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Positioned(
+                          top: 9,
+                          left: 13,
+                          child: Container(
+                            color: Colors.grey[200],
+                            height: MediaQuery.of(context).size.height * 0.02,
+                            width: MediaQuery.of(context).size.width * 0.1,
+                          ),
+                        ),
+                        Text("Best Value at Risk",
+                            style: TextStyle(
+                                color: Colors.blue[700],
+                                fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                    Text(
+                        "This category represents the maximum possible loss of the investment made.",
+                        style: TextStyle(fontSize: 10)),
+                    Image.asset("assets/share.png", scale: 1.5),
+                  ],
+                ),
+              ),
+              tabColumn_BestValue(),
+              isiColumn_BestValue(),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -2505,351 +2484,1941 @@ class _TabMutualState extends State<TabMutual> with TickerProviderStateMixin {
     );
   }
 
-  // isiColumn_DownsideRisk() {
-  //   return Row(
-  //     children: [
-  //       // Expanded(
-  //       //   child: Row(
-  //       //     crossAxisAlignment: CrossAxisAlignment.start,
-  //       //     mainAxisAlignment: MainAxisAlignment.start,
-  //       //     children: [
-  //       //       Container(
-  //       //         width: MediaQuery.of(context).size.width * 0.057,
-  //       //         height: MediaQuery.of(context).size.height * 0.5,
-  //       //         decoration: BoxDecoration(
-  //       //             color: Colors.yellow[200],
-  //       //             borderRadius: BorderRadius.vertical(
-  //       //                 top: Radius.circular(30), bottom: Radius.circular(20))),
-  //       //         child: Column(
-  //       //           children: [
-  //       //             Container(
-  //       //               height: MediaQuery.of(context).size.height * 0.1,
-  //       //               width: MediaQuery.of(context).size.width * 0.1,
-  //       //               decoration: BoxDecoration(
-  //       //                 color: Colors.yellow[600],
-  //       //                 borderRadius: BorderRadius.all(Radius.circular(30)),
-  //       //               ),
-  //       //               child: Center(
-  //       //                 child: Container(
-  //       //                   height: MediaQuery.of(context).size.height * 0.035,
-  //       //                   width: MediaQuery.of(context).size.width * 0.02,
-  //       //                   decoration: BoxDecoration(
-  //       //                     color: Colors.yellow[200],
-  //       //                     borderRadius: BorderRadius.all(Radius.circular(30)),
-  //       //                   ),
-  //       //                   child: Center(
-  //       //                     child: Container(
-  //       //                       height: MediaQuery.of(context).size.height * 0.02,
-  //       //                       width: MediaQuery.of(context).size.width * 0.011,
-  //       //                       decoration: BoxDecoration(
-  //       //                         color: Colors.yellow[50],
-  //       //                         borderRadius:
-  //       //                             BorderRadius.all(Radius.circular(30)),
-  //       //                       ),
-  //       //                     ),
-  //       //                   ),
-  //       //                 ),
-  //       //               ),
-  //       //             ),
-  //       //             Padding(
-  //       //               padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-  //       //               child: Container(
-  //       //                 height: MediaQuery.of(context).size.height * 0.34,
-  //       //                 child: ListView.builder(
-  //       //                   itemCount: 5,
-  //       //                   itemBuilder: (BuildContext context, int index) {
-  //       //                     return Card(
-  //       //                         color: Colors.grey[800],
-  //       //                         clipBehavior: Clip.hardEdge,
-  //       //                         shape: RoundedRectangleBorder(
-  //       //                           borderRadius: BorderRadius.circular(8),
-  //       //                         ),
-  //       //                         child: Padding(
-  //       //                           padding: EdgeInsets.symmetric(vertical: 10),
-  //       //                           child: Center(
-  //       //                             child: Text(
-  //       //                               downside_risk_value[index],
-  //       //                               style: TextStyle(
-  //       //                                   color: Colors.white,
-  //       //                                   fontSize: 12,
-  //       //                                   fontWeight: FontWeight.w600),
-  //       //                             ),
-  //       //                           ),
-  //       //                         ));
-  //       //                   },
-  //       //                 ),
-  //       //               ),
-  //       //             )
-  //       //           ],
-  //       //         ),
-  //       //       ),
-  //       //       Expanded(
-  //       //         child: Padding(
-  //       //           padding: EdgeInsets.only(left: 12),
-  //       //           child: Column(
-  //       //             crossAxisAlignment: CrossAxisAlignment.start,
-  //       //             mainAxisAlignment: MainAxisAlignment.start,
-  //       //             children: [
-  //       //               Padding(
-  //       //                 padding: EdgeInsets.symmetric(vertical: 25),
-  //       //                 child: Text(category[1],
-  //       //                     style: TextStyle(
-  //       //                         color: Colors.red[300],
-  //       //                         fontWeight: FontWeight.w600)),
-  //       //               ),
-  //       //               Container(
-  //       //                 width: MediaQuery.of(context).size.width * 0.2,
-  //       //                 height: MediaQuery.of(context).size.height * 0.35,
-  //       //                 child: ListView.builder(
-  //       //                   itemCount: 5,
-  //       //                   itemBuilder: (BuildContext context, int index) {
-  //       //                     return Padding(
-  //       //                       padding: EdgeInsets.only(top: 15, bottom: 15),
-  //       //                       child: Text(
-  //       //                         downside_risk_name[index],
-  //       //                         style: TextStyle(
-  //       //                             fontSize: 11, fontWeight: FontWeight.w600),
-  //       //                       ),
-  //       //                     );
-  //       //                   },
-  //       //                 ),
-  //       //               ),
-  //       //             ],
-  //       //           ),
-  //       //         ),
-  //       //       ),
-  //       //     ],
-  //       //   ),
-  //       // ),
-  //       // Expanded(
-  //       //   child: Row(
-  //       //     crossAxisAlignment: CrossAxisAlignment.start,
-  //       //     mainAxisAlignment: MainAxisAlignment.start,
-  //       //     children: [
-  //       //       Container(
-  //       //         width: MediaQuery.of(context).size.width * 0.057,
-  //       //         height: MediaQuery.of(context).size.height * 0.5,
-  //       //         decoration: BoxDecoration(
-  //       //             color: Colors.green[200],
-  //       //             borderRadius: BorderRadius.vertical(
-  //       //                 top: Radius.circular(30), bottom: Radius.circular(20))),
-  //       //         child: Column(
-  //       //           children: [
-  //       //             Container(
-  //       //               height: MediaQuery.of(context).size.height * 0.1,
-  //       //               width: MediaQuery.of(context).size.width * 0.1,
-  //       //               decoration: BoxDecoration(
-  //       //                 color: Colors.green[300],
-  //       //                 borderRadius: BorderRadius.all(Radius.circular(30)),
-  //       //               ),
-  //       //               child: Center(
-  //       //                 child: Container(
-  //       //                   height: MediaQuery.of(context).size.height * 0.035,
-  //       //                   width: MediaQuery.of(context).size.width * 0.02,
-  //       //                   decoration: BoxDecoration(
-  //       //                     color: Colors.green[200],
-  //       //                     borderRadius: BorderRadius.all(Radius.circular(30)),
-  //       //                   ),
-  //       //                   child: Center(
-  //       //                     child: Container(
-  //       //                       height: MediaQuery.of(context).size.height * 0.02,
-  //       //                       width: MediaQuery.of(context).size.width * 0.011,
-  //       //                       decoration: BoxDecoration(
-  //       //                         color: Colors.green[50],
-  //       //                         borderRadius:
-  //       //                             BorderRadius.all(Radius.circular(30)),
-  //       //                       ),
-  //       //                     ),
-  //       //                   ),
-  //       //                 ),
-  //       //               ),
-  //       //             ),
-  //       //             Padding(
-  //       //               padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-  //       //               child: Container(
-  //       //                 height: MediaQuery.of(context).size.height * 0.34,
-  //       //                 child: ListView.builder(
-  //       //                   itemCount: 5,
-  //       //                   itemBuilder: (BuildContext context, int index) {
-  //       //                     return Card(
-  //       //                         color: Colors.grey[800],
-  //       //                         clipBehavior: Clip.hardEdge,
-  //       //                         shape: RoundedRectangleBorder(
-  //       //                           borderRadius: BorderRadius.circular(8),
-  //       //                         ),
-  //       //                         child: Padding(
-  //       //                           padding: EdgeInsets.symmetric(
-  //       //                               horizontal: 5, vertical: 10),
-  //       //                           child: Center(
-  //       //                             child: Text(
-  //       //                               downside_risk_value[index],
-  //       //                               style: TextStyle(
-  //       //                                   color: Colors.white,
-  //       //                                   fontSize: 12,
-  //       //                                   fontWeight: FontWeight.w600),
-  //       //                             ),
-  //       //                           ),
-  //       //                         ));
-  //       //                   },
-  //       //                 ),
-  //       //               ),
-  //       //             )
-  //       //           ],
-  //       //         ),
-  //       //       ),
-  //       //       Expanded(
-  //       //         child: Padding(
-  //       //           padding: EdgeInsets.only(left: 12),
-  //       //           child: Column(
-  //       //             crossAxisAlignment: CrossAxisAlignment.start,
-  //       //             mainAxisAlignment: MainAxisAlignment.start,
-  //       //             children: [
-  //       //               Padding(
-  //       //                 padding: EdgeInsets.symmetric(vertical: 25),
-  //       //                 child: Text(category[2],
-  //       //                     style: TextStyle(
-  //       //                         color: Colors.red[300],
-  //       //                         fontWeight: FontWeight.w600)),
-  //       //               ),
-  //       //               Container(
-  //       //                 width: MediaQuery.of(context).size.width * 0.2,
-  //       //                 height: MediaQuery.of(context).size.height * 0.35,
-  //       //                 child: ListView.builder(
-  //       //                   itemCount: 5,
-  //       //                   itemBuilder: (BuildContext context, int index) {
-  //       //                     return Padding(
-  //       //                       padding: EdgeInsets.only(top: 15, bottom: 15),
-  //       //                       child: Text(
-  //       //                         downside_risk_name[index],
-  //       //                         style: TextStyle(
-  //       //                             fontSize: 11, fontWeight: FontWeight.w600),
-  //       //                       ),
-  //       //                     );
-  //       //                   },
-  //       //                 ),
-  //       //               ),
-  //       //             ],
-  //       //           ),
-  //       //         ),
-  //       //       ),
-  //       //     ],
-  //       //   ),
-  //       // ),
-  //       // Expanded(
-  //       //   child: Row(
-  //       //     crossAxisAlignment: CrossAxisAlignment.start,
-  //       //     mainAxisAlignment: MainAxisAlignment.start,
-  //       //     children: [
-  //       //       Container(
-  //       //         width: MediaQuery.of(context).size.width * 0.057,
-  //       //         height: MediaQuery.of(context).size.height * 0.5,
-  //       //         decoration: BoxDecoration(
-  //       //             color: Colors.blue[200],
-  //       //             borderRadius: BorderRadius.vertical(
-  //       //                 top: Radius.circular(30), bottom: Radius.circular(20))),
-  //       //         child: Column(
-  //       //           children: [
-  //       //             Container(
-  //       //               height: MediaQuery.of(context).size.height * 0.1,
-  //       //               width: MediaQuery.of(context).size.width * 0.1,
-  //       //               decoration: BoxDecoration(
-  //       //                 color: Colors.blue[300],
-  //       //                 borderRadius: BorderRadius.all(Radius.circular(30)),
-  //       //               ),
-  //       //               child: Center(
-  //       //                 child: Container(
-  //       //                   height: MediaQuery.of(context).size.height * 0.035,
-  //       //                   width: MediaQuery.of(context).size.width * 0.02,
-  //       //                   decoration: BoxDecoration(
-  //       //                     color: Colors.blue[200],
-  //       //                     borderRadius: BorderRadius.all(Radius.circular(30)),
-  //       //                   ),
-  //       //                   child: Center(
-  //       //                     child: Container(
-  //       //                       height: MediaQuery.of(context).size.height * 0.02,
-  //       //                       width: MediaQuery.of(context).size.width * 0.011,
-  //       //                       decoration: BoxDecoration(
-  //       //                         color: Colors.blue[50],
-  //       //                         borderRadius:
-  //       //                             BorderRadius.all(Radius.circular(30)),
-  //       //                       ),
-  //       //                     ),
-  //       //                   ),
-  //       //                 ),
-  //       //               ),
-  //       //             ),
-  //       //             Padding(
-  //       //               padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-  //       //               child: Container(
-  //       //                 height: MediaQuery.of(context).size.height * 0.34,
-  //       //                 child: ListView.builder(
-  //       //                   itemCount: 5,
-  //       //                   itemBuilder: (BuildContext context, int index) {
-  //       //                     return Card(
-  //       //                         color: Colors.grey[800],
-  //       //                         clipBehavior: Clip.hardEdge,
-  //       //                         shape: RoundedRectangleBorder(
-  //       //                           borderRadius: BorderRadius.circular(8),
-  //       //                         ),
-  //       //                         child: Padding(
-  //       //                           padding: EdgeInsets.symmetric(
-  //       //                               horizontal: 5, vertical: 10),
-  //       //                           child: Center(
-  //       //                             child: Text(
-  //       //                               downside_risk_value[index],
-  //       //                               style: TextStyle(
-  //       //                                   color: Colors.white,
-  //       //                                   fontSize: 12,
-  //       //                                   fontWeight: FontWeight.w600),
-  //       //                             ),
-  //       //                           ),
-  //       //                         ));
-  //       //                   },
-  //       //                 ),
-  //       //               ),
-  //       //             )
-  //       //           ],
-  //       //         ),
-  //       //       ),
-  //       //       Expanded(
-  //       //         child: Padding(
-  //       //           padding: EdgeInsets.only(left: 12),
-  //       //           child: Column(
-  //       //             crossAxisAlignment: CrossAxisAlignment.start,
-  //       //             mainAxisAlignment: MainAxisAlignment.start,
-  //       //             children: [
-  //       //               Padding(
-  //       //                 padding: EdgeInsets.symmetric(vertical: 25),
-  //       //                 child: Text(category[3],
-  //       //                     style: TextStyle(
-  //       //                         color: Colors.red[300],
-  //       //                         fontWeight: FontWeight.w600)),
-  //       //               ),
-  //       //               Container(
-  //       //                 width: MediaQuery.of(context).size.width * 0.2,
-  //       //                 height: MediaQuery.of(context).size.height * 0.4,
-  //       //                 child: ListView.builder(
-  //       //                   itemCount: 5,
-  //       //                   itemBuilder: (BuildContext context, int index) {
-  //       //                     return Padding(
-  //       //                       padding: EdgeInsets.only(top: 15, bottom: 15),
-  //       //                       child: Text(
-  //       //                         downside_risk_name[index],
-  //       //                         style: TextStyle(
-  //       //                             fontSize: 11, fontWeight: FontWeight.w600),
-  //       //                       ),
-  //       //                     );
-  //       //                   },
-  //       //                 ),
-  //       //               ),
-  //       //             ],
-  //       //           ),
-  //       //         ),
-  //       //       ),
-  //       //     ],
-  //       //   ),
-  //       // ),
-  //     ],
-  //   );
-  // }
+  tabColumn_BestValue() {
+    return Align(
+      alignment: Alignment.topRight,
+      child: Padding(
+        padding: EdgeInsets.all(12),
+        child: Container(
+          width: MediaQuery.of(context).size.width * 0.57,
+          decoration: BoxDecoration(
+              color: Colors.blue[200], borderRadius: BorderRadius.circular(10)),
+          child: TabBar(
+            padding: EdgeInsets.symmetric(horizontal: 12),
+            controller: _tabController_produc4,
+            indicator: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+                border: Border.all(color: Colors.blue.shade300, width: 1)),
+            labelColor: Colors.blue[200],
+            unselectedLabelColor: Colors.white,
+            tabs: _tabs_produc,
+          ),
+        ),
+      ),
+    );
+  }
+
+  isiColumn_BestValue() {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(width: 1),
+                    right: BorderSide(width: 1),
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: Row(
+                        children: [
+                          Stack(
+                            clipBehavior: Clip.none,
+                            children: [
+                              Card(
+                                clipBehavior: Clip.hardEdge,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                elevation: 5,
+                                shadowColor: Colors.grey,
+                                child: _buildRadialEquity(),
+                              ),
+                              Positioned(
+                                top: -12,
+                                left: 37,
+                                child: Padding(
+                                  padding: EdgeInsets.only(right: 25),
+                                  child: Card(
+                                    color: Colors.red,
+                                    clipBehavior: Clip.hardEdge,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    elevation: 2,
+                                    shadowColor: Colors.grey,
+                                    child: Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 40),
+                                      child: Text("1",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20)),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 10),
+                                    child: Stack(
+                                      clipBehavior: Clip.none,
+                                      children: [
+                                        Card(
+                                            clipBehavior: Clip.hardEdge,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            elevation: 5,
+                                            shadowColor: Colors.grey,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 25, vertical: 20),
+                                              child: IntrinsicWidth(
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      "-10.52%",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.red[600],
+                                                          fontSize: 10),
+                                                    ),
+                                                    Divider(
+                                                      thickness: 2,
+                                                      indent: 1,
+                                                      endIndent: 1,
+                                                      color: Colors.red[200],
+                                                    ),
+                                                    Text(
+                                                      "-6.68%",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.red[600],
+                                                          fontSize: 10),
+                                                    ),
+                                                    Text(
+                                                      "Trimegah Saham Nusantara",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.red[600],
+                                                          fontSize: 8),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            )),
+                                        Positioned(
+                                          top: -12,
+                                          left: 43,
+                                          child: Padding(
+                                            padding: EdgeInsets.only(right: 25),
+                                            child: Card(
+                                              color: Colors.red,
+                                              clipBehavior: Clip.hardEdge,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                              ),
+                                              elevation: 2,
+                                              shadowColor: Colors.grey,
+                                              child: Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 25),
+                                                child: Text("2",
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 20)),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Stack(
+                                    clipBehavior: Clip.none,
+                                    children: [
+                                      Card(
+                                          clipBehavior: Clip.hardEdge,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          elevation: 5,
+                                          shadowColor: Colors.grey,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 25, vertical: 20),
+                                            child: IntrinsicWidth(
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    "-10.52%",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.red[600],
+                                                        fontSize: 10),
+                                                  ),
+                                                  Divider(
+                                                    thickness: 2,
+                                                    indent: 1,
+                                                    endIndent: 1,
+                                                    color: Colors.red[200],
+                                                  ),
+                                                  Text(
+                                                    "-6.68%",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.red[600],
+                                                        fontSize: 10),
+                                                  ),
+                                                  Text(
+                                                    "Trimegah Saham Nusantara",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.red[600],
+                                                        fontSize: 8),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          )),
+                                      Positioned(
+                                        top: -13,
+                                        left: 43,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(right: 25),
+                                          child: Card(
+                                            color: Colors.red,
+                                            clipBehavior: Clip.hardEdge,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                            ),
+                                            elevation: 2,
+                                            shadowColor: Colors.grey,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 25),
+                                              child: Text("3",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 20)),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 10),
+                                    child: Stack(
+                                      clipBehavior: Clip.none,
+                                      children: [
+                                        Card(
+                                            clipBehavior: Clip.hardEdge,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            elevation: 5,
+                                            shadowColor: Colors.grey,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 25, vertical: 20),
+                                              child: IntrinsicWidth(
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      "-10.52%",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.red[600],
+                                                          fontSize: 10),
+                                                    ),
+                                                    Divider(
+                                                      thickness: 2,
+                                                      indent: 1,
+                                                      endIndent: 1,
+                                                      color: Colors.red[200],
+                                                    ),
+                                                    Text(
+                                                      "-6.68%",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.red[600],
+                                                          fontSize: 10),
+                                                    ),
+                                                    Text(
+                                                      "Trimegah Saham Nusantara",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.red[600],
+                                                          fontSize: 8),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            )),
+                                        Positioned(
+                                          top: -12,
+                                          left: 43,
+                                          child: Padding(
+                                            padding: EdgeInsets.only(right: 25),
+                                            child: Card(
+                                              color: Colors.red,
+                                              clipBehavior: Clip.hardEdge,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                              ),
+                                              elevation: 2,
+                                              shadowColor: Colors.grey,
+                                              child: Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 25),
+                                                child: Text("4",
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 20)),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Stack(
+                                    clipBehavior: Clip.none,
+                                    children: [
+                                      Card(
+                                          clipBehavior: Clip.hardEdge,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          elevation: 5,
+                                          shadowColor: Colors.grey,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 25, vertical: 20),
+                                            child: IntrinsicWidth(
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    "-10.52%",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.red[600],
+                                                        fontSize: 10),
+                                                  ),
+                                                  Divider(
+                                                    thickness: 2,
+                                                    indent: 1,
+                                                    endIndent: 1,
+                                                    color: Colors.red[200],
+                                                  ),
+                                                  Text(
+                                                    "-6.68%",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.red[600],
+                                                        fontSize: 10),
+                                                  ),
+                                                  Text(
+                                                    "Trimegah Saham Nusantara",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.red[600],
+                                                        fontSize: 8),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          )),
+                                      Positioned(
+                                        top: -13,
+                                        left: 43,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(right: 25),
+                                          child: Card(
+                                            color: Colors.red,
+                                            clipBehavior: Clip.hardEdge,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                            ),
+                                            elevation: 2,
+                                            shadowColor: Colors.grey,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 25),
+                                              child: Text("5",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 20)),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 30, bottom: 20),
+                      child: Text(
+                        "Equity",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.red[700]),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(width: 1),
+                  ),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.only(left: 15),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Row(
+                          children: [
+                            Stack(
+                              clipBehavior: Clip.none,
+                              children: [
+                                Card(
+                                  clipBehavior: Clip.hardEdge,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  elevation: 5,
+                                  shadowColor: Colors.grey,
+                                  child: _buildRadialBalanced(),
+                                ),
+                                Positioned(
+                                  top: -12,
+                                  left: 37,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(right: 25),
+                                    child: Card(
+                                      color: Colors.yellow[800],
+                                      clipBehavior: Clip.hardEdge,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      elevation: 2,
+                                      shadowColor: Colors.grey,
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 40),
+                                        child: Text("1",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(vertical: 10),
+                                      child: Stack(
+                                        clipBehavior: Clip.none,
+                                        children: [
+                                          Card(
+                                              clipBehavior: Clip.hardEdge,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              elevation: 5,
+                                              shadowColor: Colors.grey,
+                                              child: Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 25,
+                                                    vertical: 20),
+                                                child: IntrinsicWidth(
+                                                  child: Column(
+                                                    children: [
+                                                      Text(
+                                                        "-10.52%",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color: Colors
+                                                                .yellow[800],
+                                                            fontSize: 10),
+                                                      ),
+                                                      Divider(
+                                                        thickness: 2,
+                                                        indent: 1,
+                                                        endIndent: 1,
+                                                        color:
+                                                            Colors.yellow[800],
+                                                      ),
+                                                      Text(
+                                                        "-6.68%",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color: Colors
+                                                                .yellow[800],
+                                                            fontSize: 10),
+                                                      ),
+                                                      Text(
+                                                        "Trimegah Saham Nusantara",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color: Colors
+                                                                .yellow[800],
+                                                            fontSize: 8),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              )),
+                                          Positioned(
+                                            top: -12,
+                                            left: 43,
+                                            child: Padding(
+                                              padding:
+                                                  EdgeInsets.only(right: 25),
+                                              child: Card(
+                                                color: Colors.yellow[800],
+                                                clipBehavior: Clip.hardEdge,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(15),
+                                                ),
+                                                elevation: 2,
+                                                shadowColor: Colors.grey,
+                                                child: Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 25),
+                                                  child: Text("2",
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 20)),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Stack(
+                                      clipBehavior: Clip.none,
+                                      children: [
+                                        Card(
+                                            clipBehavior: Clip.hardEdge,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            elevation: 5,
+                                            shadowColor: Colors.grey,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 25, vertical: 20),
+                                              child: IntrinsicWidth(
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      "-10.52%",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: Colors
+                                                              .yellow[800],
+                                                          fontSize: 10),
+                                                    ),
+                                                    Divider(
+                                                      thickness: 2,
+                                                      indent: 1,
+                                                      endIndent: 1,
+                                                      color: Colors.yellow[800],
+                                                    ),
+                                                    Text(
+                                                      "-6.68%",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: Colors
+                                                              .yellow[800],
+                                                          fontSize: 10),
+                                                    ),
+                                                    Text(
+                                                      "Trimegah Saham Nusantara",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: Colors
+                                                              .yellow[800],
+                                                          fontSize: 8),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            )),
+                                        Positioned(
+                                          top: -13,
+                                          left: 43,
+                                          child: Padding(
+                                            padding: EdgeInsets.only(right: 25),
+                                            child: Card(
+                                              color: Colors.yellow[800],
+                                              clipBehavior: Clip.hardEdge,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                              ),
+                                              elevation: 2,
+                                              shadowColor: Colors.grey,
+                                              child: Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 25),
+                                                child: Text("3",
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 20)),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(vertical: 10),
+                                      child: Stack(
+                                        clipBehavior: Clip.none,
+                                        children: [
+                                          Card(
+                                              clipBehavior: Clip.hardEdge,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              elevation: 5,
+                                              shadowColor: Colors.grey,
+                                              child: Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 25,
+                                                    vertical: 20),
+                                                child: IntrinsicWidth(
+                                                  child: Column(
+                                                    children: [
+                                                      Text(
+                                                        "-10.52%",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color: Colors
+                                                                .yellow[800],
+                                                            fontSize: 10),
+                                                      ),
+                                                      Divider(
+                                                        thickness: 2,
+                                                        indent: 1,
+                                                        endIndent: 1,
+                                                        color:
+                                                            Colors.yellow[800],
+                                                      ),
+                                                      Text(
+                                                        "-6.68%",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color: Colors
+                                                                .yellow[800],
+                                                            fontSize: 10),
+                                                      ),
+                                                      Text(
+                                                        "Trimegah Saham Nusantara",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color: Colors
+                                                                .yellow[800],
+                                                            fontSize: 8),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              )),
+                                          Positioned(
+                                            top: -12,
+                                            left: 43,
+                                            child: Padding(
+                                              padding:
+                                                  EdgeInsets.only(right: 25),
+                                              child: Card(
+                                                color: Colors.yellow[800],
+                                                clipBehavior: Clip.hardEdge,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(15),
+                                                ),
+                                                elevation: 2,
+                                                shadowColor: Colors.grey,
+                                                child: Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 25),
+                                                  child: Text("4",
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 20)),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Stack(
+                                      clipBehavior: Clip.none,
+                                      children: [
+                                        Card(
+                                            clipBehavior: Clip.hardEdge,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            elevation: 5,
+                                            shadowColor: Colors.grey,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 25, vertical: 20),
+                                              child: IntrinsicWidth(
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      "-10.52%",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: Colors
+                                                              .yellow[800],
+                                                          fontSize: 10),
+                                                    ),
+                                                    Divider(
+                                                      thickness: 2,
+                                                      indent: 1,
+                                                      endIndent: 1,
+                                                      color: Colors.yellow[800],
+                                                    ),
+                                                    Text(
+                                                      "-6.68%",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: Colors
+                                                              .yellow[800],
+                                                          fontSize: 10),
+                                                    ),
+                                                    Text(
+                                                      "Trimegah Saham Nusantara",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: Colors
+                                                              .yellow[800],
+                                                          fontSize: 8),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            )),
+                                        Positioned(
+                                          top: -13,
+                                          left: 43,
+                                          child: Padding(
+                                            padding: EdgeInsets.only(right: 25),
+                                            child: Card(
+                                              color: Colors.yellow[800],
+                                              clipBehavior: Clip.hardEdge,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                              ),
+                                              elevation: 2,
+                                              shadowColor: Colors.grey,
+                                              child: Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 25),
+                                                child: Text("5",
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 20)),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 5, bottom: 20),
+                        child: Text(
+                          "Balanced",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.yellow[800]),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border(
+                    right: BorderSide(width: 1),
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(right: 30, top: 20),
+                      child: Text(
+                        "Fixed Income",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.green[700]),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: Row(
+                        children: [
+                          Stack(
+                            clipBehavior: Clip.none,
+                            children: [
+                              Card(
+                                clipBehavior: Clip.hardEdge,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                elevation: 5,
+                                shadowColor: Colors.grey,
+                                child: _buildRadialFixedIncome(),
+                              ),
+                              Positioned(
+                                top: -12,
+                                left: 37,
+                                child: Padding(
+                                  padding: EdgeInsets.only(right: 25),
+                                  child: Card(
+                                    color: Colors.green[700],
+                                    clipBehavior: Clip.hardEdge,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    elevation: 2,
+                                    shadowColor: Colors.grey,
+                                    child: Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 40),
+                                      child: Text("1",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20)),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 10),
+                                    child: Stack(
+                                      clipBehavior: Clip.none,
+                                      children: [
+                                        Card(
+                                            clipBehavior: Clip.hardEdge,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            elevation: 5,
+                                            shadowColor: Colors.grey,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 25, vertical: 20),
+                                              child: IntrinsicWidth(
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      "-10.52%",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.green[700],
+                                                          fontSize: 10),
+                                                    ),
+                                                    Divider(
+                                                      thickness: 2,
+                                                      indent: 1,
+                                                      endIndent: 1,
+                                                      color: Colors.green[500],
+                                                    ),
+                                                    Text(
+                                                      "-6.68%",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.green[700],
+                                                          fontSize: 10),
+                                                    ),
+                                                    Text(
+                                                      "Trimegah Saham Nusantara",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.green[700],
+                                                          fontSize: 8),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            )),
+                                        Positioned(
+                                          top: -12,
+                                          left: 43,
+                                          child: Padding(
+                                            padding: EdgeInsets.only(right: 25),
+                                            child: Card(
+                                              color: Colors.green[700],
+                                              clipBehavior: Clip.hardEdge,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                              ),
+                                              elevation: 2,
+                                              shadowColor: Colors.grey,
+                                              child: Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 25),
+                                                child: Text("2",
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 20)),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Stack(
+                                    clipBehavior: Clip.none,
+                                    children: [
+                                      Card(
+                                          clipBehavior: Clip.hardEdge,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          elevation: 5,
+                                          shadowColor: Colors.grey,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 25, vertical: 20),
+                                            child: IntrinsicWidth(
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    "-10.52%",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color:
+                                                            Colors.green[700],
+                                                        fontSize: 10),
+                                                  ),
+                                                  Divider(
+                                                    thickness: 2,
+                                                    indent: 1,
+                                                    endIndent: 1,
+                                                    color: Colors.green[500],
+                                                  ),
+                                                  Text(
+                                                    "-6.68%",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color:
+                                                            Colors.green[700],
+                                                        fontSize: 10),
+                                                  ),
+                                                  Text(
+                                                    "Trimegah Saham Nusantara",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color:
+                                                            Colors.green[700],
+                                                        fontSize: 8),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          )),
+                                      Positioned(
+                                        top: -13,
+                                        left: 43,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(right: 25),
+                                          child: Card(
+                                            color: Colors.green[700],
+                                            clipBehavior: Clip.hardEdge,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                            ),
+                                            elevation: 2,
+                                            shadowColor: Colors.grey,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 25),
+                                              child: Text("3",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 20)),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 10),
+                                    child: Stack(
+                                      clipBehavior: Clip.none,
+                                      children: [
+                                        Card(
+                                            clipBehavior: Clip.hardEdge,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            elevation: 5,
+                                            shadowColor: Colors.grey,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 25, vertical: 20),
+                                              child: IntrinsicWidth(
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      "-10.52%",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.green[700],
+                                                          fontSize: 10),
+                                                    ),
+                                                    Divider(
+                                                      thickness: 2,
+                                                      indent: 1,
+                                                      endIndent: 1,
+                                                      color: Colors.green[500],
+                                                    ),
+                                                    Text(
+                                                      "-6.68%",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.green[700],
+                                                          fontSize: 10),
+                                                    ),
+                                                    Text(
+                                                      "Trimegah Saham Nusantara",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.green[700],
+                                                          fontSize: 8),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            )),
+                                        Positioned(
+                                          top: -12,
+                                          left: 43,
+                                          child: Padding(
+                                            padding: EdgeInsets.only(right: 25),
+                                            child: Card(
+                                              color: Colors.green[700],
+                                              clipBehavior: Clip.hardEdge,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                              ),
+                                              elevation: 2,
+                                              shadowColor: Colors.grey,
+                                              child: Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 25),
+                                                child: Text("4",
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 20)),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Stack(
+                                    clipBehavior: Clip.none,
+                                    children: [
+                                      Card(
+                                          clipBehavior: Clip.hardEdge,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          elevation: 5,
+                                          shadowColor: Colors.grey,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 25, vertical: 20),
+                                            child: IntrinsicWidth(
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    "-10.52%",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color:
+                                                            Colors.green[700],
+                                                        fontSize: 10),
+                                                  ),
+                                                  Divider(
+                                                    thickness: 2,
+                                                    indent: 1,
+                                                    endIndent: 1,
+                                                    color: Colors.green[500],
+                                                  ),
+                                                  Text(
+                                                    "-6.68%",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color:
+                                                            Colors.green[700],
+                                                        fontSize: 10),
+                                                  ),
+                                                  Text(
+                                                    "Trimegah Saham Nusantara",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color:
+                                                            Colors.green[700],
+                                                        fontSize: 8),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          )),
+                                      Positioned(
+                                        top: -13,
+                                        left: 43,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(right: 25),
+                                          child: Card(
+                                            color: Colors.green[700],
+                                            clipBehavior: Clip.hardEdge,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                            ),
+                                            elevation: 2,
+                                            shadowColor: Colors.grey,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 25),
+                                              child: Text("5",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 20)),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 5, top: 20),
+                      child: Text(
+                        "Money Market",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue[800]),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: Row(
+                        children: [
+                          Stack(
+                            clipBehavior: Clip.none,
+                            children: [
+                              Card(
+                                clipBehavior: Clip.hardEdge,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                elevation: 5,
+                                shadowColor: Colors.grey,
+                                child: _buildRadialMoneyMarket(),
+                              ),
+                              Positioned(
+                                top: -12,
+                                left: 37,
+                                child: Padding(
+                                  padding: EdgeInsets.only(right: 25),
+                                  child: Card(
+                                    color: Colors.blue[700],
+                                    clipBehavior: Clip.hardEdge,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    elevation: 2,
+                                    shadowColor: Colors.grey,
+                                    child: Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 40),
+                                      child: Text("1",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20)),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 10),
+                                    child: Stack(
+                                      clipBehavior: Clip.none,
+                                      children: [
+                                        Card(
+                                            clipBehavior: Clip.hardEdge,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            elevation: 5,
+                                            shadowColor: Colors.grey,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 25, vertical: 20),
+                                              child: IntrinsicWidth(
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      "-10.52%",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.blue[700],
+                                                          fontSize: 10),
+                                                    ),
+                                                    Divider(
+                                                      thickness: 2,
+                                                      indent: 1,
+                                                      endIndent: 1,
+                                                      color: Colors.blue[700],
+                                                    ),
+                                                    Text(
+                                                      "-6.68%",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.blue[700],
+                                                          fontSize: 10),
+                                                    ),
+                                                    Text(
+                                                      "Trimegah Saham Nusantara",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.blue[700],
+                                                          fontSize: 8),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            )),
+                                        Positioned(
+                                          top: -12,
+                                          left: 43,
+                                          child: Padding(
+                                            padding: EdgeInsets.only(right: 25),
+                                            child: Card(
+                                              color: Colors.blue[700],
+                                              clipBehavior: Clip.hardEdge,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                              ),
+                                              elevation: 2,
+                                              shadowColor: Colors.grey,
+                                              child: Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 25),
+                                                child: Text("2",
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 20)),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Stack(
+                                    clipBehavior: Clip.none,
+                                    children: [
+                                      Card(
+                                          clipBehavior: Clip.hardEdge,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          elevation: 5,
+                                          shadowColor: Colors.grey,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 25, vertical: 20),
+                                            child: IntrinsicWidth(
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    "-10.52%",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.blue[700],
+                                                        fontSize: 10),
+                                                  ),
+                                                  Divider(
+                                                    thickness: 2,
+                                                    indent: 1,
+                                                    endIndent: 1,
+                                                    color: Colors.blue[700],
+                                                  ),
+                                                  Text(
+                                                    "-6.68%",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.blue[700],
+                                                        fontSize: 10),
+                                                  ),
+                                                  Text(
+                                                    "Trimegah Saham Nusantara",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.blue[700],
+                                                        fontSize: 8),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          )),
+                                      Positioned(
+                                        top: -13,
+                                        left: 43,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(right: 25),
+                                          child: Card(
+                                            color: Colors.blue[700],
+                                            clipBehavior: Clip.hardEdge,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                            ),
+                                            elevation: 2,
+                                            shadowColor: Colors.grey,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 25),
+                                              child: Text("3",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 20)),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 10),
+                                    child: Stack(
+                                      clipBehavior: Clip.none,
+                                      children: [
+                                        Card(
+                                            clipBehavior: Clip.hardEdge,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            elevation: 5,
+                                            shadowColor: Colors.grey,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 25, vertical: 20),
+                                              child: IntrinsicWidth(
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      "-10.52%",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.blue[700],
+                                                          fontSize: 10),
+                                                    ),
+                                                    Divider(
+                                                      thickness: 2,
+                                                      indent: 1,
+                                                      endIndent: 1,
+                                                      color: Colors.blue[700],
+                                                    ),
+                                                    Text(
+                                                      "-6.68%",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.blue[700],
+                                                          fontSize: 10),
+                                                    ),
+                                                    Text(
+                                                      "Trimegah Saham Nusantara",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.blue[700],
+                                                          fontSize: 8),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            )),
+                                        Positioned(
+                                          top: -12,
+                                          left: 43,
+                                          child: Padding(
+                                            padding: EdgeInsets.only(right: 25),
+                                            child: Card(
+                                              color: Colors.blue[700],
+                                              clipBehavior: Clip.hardEdge,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                              ),
+                                              elevation: 2,
+                                              shadowColor: Colors.grey,
+                                              child: Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 25),
+                                                child: Text("4",
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 20)),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Stack(
+                                    clipBehavior: Clip.none,
+                                    children: [
+                                      Card(
+                                          clipBehavior: Clip.hardEdge,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          elevation: 5,
+                                          shadowColor: Colors.grey,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 25, vertical: 20),
+                                            child: IntrinsicWidth(
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    "-10.52%",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.blue[700],
+                                                        fontSize: 10),
+                                                  ),
+                                                  Divider(
+                                                    thickness: 2,
+                                                    indent: 1,
+                                                    endIndent: 1,
+                                                    color: Colors.blue[700],
+                                                  ),
+                                                  Text(
+                                                    "-6.68%",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.blue[700],
+                                                        fontSize: 10),
+                                                  ),
+                                                  Text(
+                                                    "Trimegah Saham Nusantara",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.blue[700],
+                                                        fontSize: 8),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          )),
+                                      Positioned(
+                                        top: -13,
+                                        left: 43,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(right: 25),
+                                          child: Card(
+                                            color: Colors.blue[700],
+                                            clipBehavior: Clip.hardEdge,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                            ),
+                                            elevation: 2,
+                                            shadowColor: Colors.grey,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 25),
+                                              child: Text("5",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 20)),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  _buildRadialEquity() {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.20,
+      width: MediaQuery.of(context).size.width * 0.15,
+      margin: EdgeInsets.symmetric(vertical: 40),
+      child: SfRadialGauge(
+        axes: <RadialAxis>[
+          RadialAxis(
+              annotations: <GaugeAnnotation>[
+                GaugeAnnotation(
+                    angle: 90,
+                    positionFactor: 0.7,
+                    widget: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          "-6.68%",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              color: Colors.red[600],
+                              fontSize: 12),
+                        ),
+                        Text(
+                          "Sucorinvest Saham Dinamis",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              color: Colors.red[600],
+                              fontSize: 10),
+                        ),
+                      ],
+                    ))
+              ],
+              showTicks: false,
+              startAngle: 180,
+              endAngle: 360,
+              canScaleToFit: false,
+              showLabels: false,
+              pointers: <GaugePointer>[
+                RangePointer(
+                    cornerStyle: CornerStyle.bothCurve,
+                    width: 15,
+                    value: 25,
+                    animationDuration: 2000,
+                    enableAnimation: true,
+                    animationType: AnimationType.elasticOut,
+                    color: Colors.red[500]),
+                NeedlePointer(
+                    value: 25,
+                    needleColor: Colors.black,
+                    enableAnimation: true,
+                    animationDuration: 2000,
+                    animationType: AnimationType.elasticOut)
+              ],
+              axisLineStyle: AxisLineStyle(thickness: 15))
+        ],
+      ),
+    );
+  }
+
+  _buildRadialBalanced() {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.20,
+      width: MediaQuery.of(context).size.width * 0.15,
+      margin: EdgeInsets.symmetric(vertical: 40),
+      child: SfRadialGauge(
+        axes: <RadialAxis>[
+          RadialAxis(
+              annotations: <GaugeAnnotation>[
+                GaugeAnnotation(
+                    angle: 90,
+                    positionFactor: 0.7,
+                    widget: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          "-6.68%",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              color: Colors.yellow[800],
+                              fontSize: 12),
+                        ),
+                        Text(
+                          "Sucorinvest Saham Dinamis",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              color: Colors.yellow[800],
+                              fontSize: 10),
+                        ),
+                      ],
+                    ))
+              ],
+              showTicks: false,
+              startAngle: 180,
+              endAngle: 360,
+              canScaleToFit: false,
+              showLabels: false,
+              pointers: <GaugePointer>[
+                RangePointer(
+                    cornerStyle: CornerStyle.bothCurve,
+                    width: 15,
+                    value: 25,
+                    animationDuration: 2000,
+                    enableAnimation: true,
+                    animationType: AnimationType.elasticOut,
+                    color: Colors.yellow[800]),
+                NeedlePointer(
+                    value: 25,
+                    needleColor: Colors.black,
+                    enableAnimation: true,
+                    animationDuration: 2000,
+                    animationType: AnimationType.elasticOut)
+              ],
+              axisLineStyle: AxisLineStyle(thickness: 15))
+        ],
+      ),
+    );
+  }
+
+  _buildRadialFixedIncome() {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.20,
+      width: MediaQuery.of(context).size.width * 0.15,
+      margin: EdgeInsets.symmetric(vertical: 40),
+      child: SfRadialGauge(
+        axes: <RadialAxis>[
+          RadialAxis(
+              annotations: <GaugeAnnotation>[
+                GaugeAnnotation(
+                    angle: 90,
+                    positionFactor: 0.7,
+                    widget: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          "-6.68%",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              color: Colors.green[700],
+                              fontSize: 12),
+                        ),
+                        Text(
+                          "Sucorinvest Saham Dinamis",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              color: Colors.green[700],
+                              fontSize: 10),
+                        ),
+                      ],
+                    ))
+              ],
+              showTicks: false,
+              startAngle: 180,
+              endAngle: 360,
+              canScaleToFit: false,
+              showLabels: false,
+              pointers: <GaugePointer>[
+                RangePointer(
+                    cornerStyle: CornerStyle.bothCurve,
+                    width: 15,
+                    value: 25,
+                    animationDuration: 2000,
+                    enableAnimation: true,
+                    animationType: AnimationType.elasticOut,
+                    color: Colors.green[700]),
+                NeedlePointer(
+                    value: 25,
+                    needleColor: Colors.black,
+                    enableAnimation: true,
+                    animationDuration: 2000,
+                    animationType: AnimationType.elasticOut)
+              ],
+              axisLineStyle: AxisLineStyle(thickness: 15))
+        ],
+      ),
+    );
+  }
+
+  _buildRadialMoneyMarket() {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.20,
+      width: MediaQuery.of(context).size.width * 0.15,
+      margin: EdgeInsets.symmetric(vertical: 40),
+      child: SfRadialGauge(
+        axes: <RadialAxis>[
+          RadialAxis(
+              annotations: <GaugeAnnotation>[
+                GaugeAnnotation(
+                    angle: 90,
+                    positionFactor: 0.7,
+                    widget: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          "-6.68%",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              color: Colors.blue[700],
+                              fontSize: 12),
+                        ),
+                        Text(
+                          "Sucorinvest Saham Dinamis",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              color: Colors.blue[700],
+                              fontSize: 10),
+                        ),
+                      ],
+                    ))
+              ],
+              showTicks: false,
+              startAngle: 180,
+              endAngle: 360,
+              canScaleToFit: false,
+              showLabels: false,
+              pointers: <GaugePointer>[
+                RangePointer(
+                    cornerStyle: CornerStyle.bothCurve,
+                    width: 15,
+                    value: 25,
+                    animationDuration: 2000,
+                    enableAnimation: true,
+                    animationType: AnimationType.elasticOut,
+                    color: Colors.blue[700]),
+                NeedlePointer(
+                    value: 25,
+                    needleColor: Colors.black,
+                    enableAnimation: true,
+                    animationDuration: 2000,
+                    animationType: AnimationType.elasticOut)
+              ],
+              axisLineStyle: AxisLineStyle(thickness: 15))
+        ],
+      ),
+    );
+  }
 }
